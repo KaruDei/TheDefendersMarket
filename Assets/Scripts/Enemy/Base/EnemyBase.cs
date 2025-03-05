@@ -5,6 +5,7 @@ namespace Enemy
     public abstract class EnemyBase : MonoBehaviour, IAttack, IHealth
     {
         public abstract float Damage { get; }
+        public abstract float MaxHealth { get; }
         public abstract float Health { get; }
 
         public abstract void Attack();

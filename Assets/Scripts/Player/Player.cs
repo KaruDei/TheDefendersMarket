@@ -20,15 +20,18 @@ namespace Player
         private float _health;
         private bool _isAttack = false;
         private bool _isAlive = true;
+        private Camera _camera;
 
         public InputManager InputManager => _inputManager;
 
         public float Damage => _damage;
+        public float MaxHealth => _maxHealth;
         public float Health => _health;
 
         private void Start()
         {
             _health = _maxHealth;
+            _camera = Camera.main;
         }
 
         private void FixedUpdate()
@@ -56,7 +59,7 @@ namespace Player
         {
             //Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * _attackDistance, Color.red, 5f);
             RaycastHit hitInfo;
-            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hitInfo, _attackDistance, _attackLayerMask))
+            if (Physics.Raycast(_camera.transform.position, _camera.transform.forward, out hitInfo, _attackDistance, _attackLayerMask))
             {
                 if (hitInfo.collider.gameObject.TryGetComponent(out IHealth character))
                 {

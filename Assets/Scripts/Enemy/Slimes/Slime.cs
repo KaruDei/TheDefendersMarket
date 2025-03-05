@@ -12,6 +12,7 @@ namespace Enemy
         private float _health;
 
         public override float Damage => _damage;
+        public override float MaxHealth => _maxHealth;
         public override float Health => _health;
 
         private void Start()
