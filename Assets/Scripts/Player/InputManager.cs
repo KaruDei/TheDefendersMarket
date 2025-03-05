@@ -13,11 +13,13 @@ namespace Player
         private InputAction _lookAction;
         private InputAction _runAction;
         private InputAction _jumpAction;
+        private InputAction _attackAction;
 
         public Vector2 Move {  get; private set; }
         public Vector2 Look {  get; private set; }
         public bool Run {  get; private set; }
         public bool Jump {  get; private set; }
+        public bool Attack {  get; private set; }
 
         private void Awake()
         {
@@ -26,16 +28,19 @@ namespace Player
             _lookAction = _inputMap.FindAction("Look");
             _runAction = _inputMap.FindAction("Run");
             _jumpAction = _inputMap.FindAction("Jump");
+            _attackAction = _inputMap.FindAction("Attack");
 
             _moveAction.performed += OnMove;
             _lookAction.performed += OnLook;
             _runAction.performed += OnRun;
             _jumpAction.performed += OnJump;
+            _attackAction.performed += OnAttack;
 
             _moveAction.canceled += OnMove;
             _lookAction.canceled += OnLook;
             _runAction.canceled += OnRun;
             _jumpAction.canceled += OnJump;
+            _attackAction.canceled += OnAttack;
         }
 
         private void Start()
@@ -61,6 +66,11 @@ namespace Player
         private void OnJump(InputAction.CallbackContext context)
         {
             Jump = context.ReadValueAsButton();
+        }
+        
+        private void OnAttack(InputAction.CallbackContext context)
+        {
+            Attack = context.ReadValueAsButton();
         }
 
         private void HideCursor()
