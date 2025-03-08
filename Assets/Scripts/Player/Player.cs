@@ -3,13 +3,12 @@ using UnityEngine;
 namespace Player
 {
     [RequireComponent (typeof (MovementController), typeof(InputManager))]
-    public class Player : MonoBehaviour, IAttack, IHealth
+    public class Player : Unit, IAttack
     {
         [Header("Components")]
         [SerializeField] private InputManager _inputManager;
 
         [Header("Player Settings")]
-        [SerializeField] private float _maxHealth = 100f;
         [SerializeField] private float _damage;
         [SerializeField] private float _attackDistance;
         [SerializeField] private LayerMask _attackLayerMask;
@@ -17,16 +16,12 @@ namespace Player
         [Header("Animator")]
         [SerializeField] private Animator _animator;
 
-        private float _health;
         private bool _isAttack = false;
-        private bool _isAlive = true;
         private Camera _camera;
 
         public InputManager InputManager => _inputManager;
 
         public float Damage => _damage;
-        public float MaxHealth => _maxHealth;
-        public float Health => _health;
 
         private void Start()
         {
@@ -68,29 +63,10 @@ namespace Player
             }
         }
 
-        public void Heal(float value)
+        public override void Die()
         {
-            if (!_isAlive) return;
-            
-            _health = _health + value >= _maxHealth ? _maxHealth : _health + value;
-        }
-
-        public void TakeDamage(float value)
-        {
-            if (!_isAlive) return;
-
-            _health = _health - value > 0 ? _health - value : 0;
-           
-            if (_health == 0) 
-                Die();
-        }
-
-        public void Die()
-        {
-            if (!_isAlive) return;
-
-            Debug.Log("Die");
             _isAlive = false;
+            Debug.Log("Die");
         }
     }
 }

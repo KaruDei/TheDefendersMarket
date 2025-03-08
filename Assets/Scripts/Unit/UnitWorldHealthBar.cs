@@ -1,11 +1,10 @@
-using Enemy;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CharacterWorldHealthBar : MonoBehaviour
+public class UnitWorldHealthBar : MonoBehaviour
 {
     [Header("Components")]
-    [SerializeField] private EnemyBase _character;
+    [SerializeField] private Unit _character;
     [SerializeField] private Transform _canvas;
     [SerializeField] private Image _healthBar;
 
