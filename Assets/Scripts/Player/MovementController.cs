@@ -6,7 +6,7 @@ namespace Player
     public class MovementController : MonoBehaviour
     {
         [Header("Player")]
-        [SerializeField] private Player _player;
+        [SerializeField] private PlayerController _player;
 
         [Header("Movement")]
         [SerializeField] private CharacterController _characterController;
@@ -26,7 +26,7 @@ namespace Player
 
         private void FixedUpdate()
         {
-            if (!_player.IsAlive) return;
+            //if (!_player.IsAlive) return;
             Move();
             Jump();
             Look();

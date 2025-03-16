@@ -316,9 +316,19 @@ MonoBehaviour:
   _attackLayerMask:
     serializedVersion: 2
     m_Bits: 136
+  _buildingLayerMask:
+    serializedVersion: 2
+    m_Bits: 512
   _agent: {fileID: 8610968744505841615}
-  _stopDistance: 2
+  _stopDistance: 1
   _playerFollowDistance: 10
+  _baseTarget: {fileID: 0}
+  _player: {fileID: 0}
+  _currentTarget: {fileID: 0}
+  _isCanAttack: 1
+  _isCanAttackBuildings: 0
+  _isAttack: 0
+  _attackTime: 0
 --- !u!195 &8610968744505841615
 NavMeshAgent:
   m_ObjectHideFlags: 0

@@ -12,7 +12,7 @@ public abstract class Unit : MonoBehaviour, IHealth
     // Properties
     protected float _health;
 
-    private void Start()
+    protected virtual void Start()
     {
         _health = _maxHealth;
     }
