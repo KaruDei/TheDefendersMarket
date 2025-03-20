@@ -27,6 +27,7 @@ namespace Player
         private void FixedUpdate()
         {
             //if (!_player.IsAlive) return;
+            if (!_player.IsCanMove) return;
             Move();
             Jump();
             Look();

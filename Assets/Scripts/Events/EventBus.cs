@@ -7,6 +7,7 @@ public static class EventBus
     public static event Action<DefenderStructureBase> OnBuildingDestroyed;
     public static event Action<Gate> OnGateDestroyed;
     public static event Action<UnitAgentBase> OnUnitAgentDie;
+    public static event Action<Inventory> OnInventoryIsFull;
 
     public static void PublishPlayerDie(PlayerController player)
     {
@@ -26,5 +27,10 @@ public static class EventBus
     public static void PublishUnitAgentDie(UnitAgentBase unitAgent)
     {
         OnUnitAgentDie?.Invoke(unitAgent);
+    }
+
+    public static void PublishInventoryIsFull(Inventory inventory)
+    {
+        OnInventoryIsFull?.Invoke(inventory);
     }
 }

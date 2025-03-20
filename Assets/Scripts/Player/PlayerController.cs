@@ -9,9 +9,8 @@ namespace Player
         [Header("Components")]
         [SerializeField] private InputManager _inputManager;
 
-        [Header("Animator")]
-        [SerializeField] private Animator _animator;
-
         public InputManager InputManager => _inputManager;
+
+        public bool IsCanMove = false;
     }
 }
