@@ -4,7 +4,7 @@ namespace Player
 {
     [SelectionBase]
     [RequireComponent (typeof (MovementController), typeof(InputManager))]
-    public class PlayerController : MonoBehaviour
+    public class PlayerComponent : MonoBehaviour
     {
         [Header("Components")]
         [SerializeField] private InputManager _inputManager;

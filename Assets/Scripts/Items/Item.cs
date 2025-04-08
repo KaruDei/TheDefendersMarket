@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Item : MonoBehaviour
+public class Item : MonoBehaviour, IInteractable
 {
     [SerializeField] private ScriptableItem _scriptableItem;
 
@@ -20,5 +20,11 @@ public class Item : MonoBehaviour
         ItemCount -= count;
         if (ItemCount == 0) 
             Destroy(gameObject);
+    }
+
+    public void Interact()
+    {
+        Debug.Log($"{gameObject.name} Interact");
+        EventBus.PublishAddItemToInventory(this);
     }
 }

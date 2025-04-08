@@ -3,13 +3,15 @@ using System;
 
 public static class EventBus
 {
-    public static event Action<PlayerController> OnPlayerDie;
+    public static event Action<PlayerComponent> OnPlayerDie;
     public static event Action<DefenderStructureBase> OnBuildingDestroyed;
     public static event Action<Gate> OnGateDestroyed;
     public static event Action<UnitAgentBase> OnUnitAgentDie;
     public static event Action<Inventory> OnInventoryIsFull;
+    public static event Action<Item> OnAddItemToIntentory;
+    public static event Action OnInteraction;
 
-    public static void PublishPlayerDie(PlayerController player)
+    public static void PublishPlayerDie(PlayerComponent player)
     {
         OnPlayerDie?.Invoke(player);
     }
@@ -32,5 +34,15 @@ public static class EventBus
     public static void PublishInventoryIsFull(Inventory inventory)
     {
         OnInventoryIsFull?.Invoke(inventory);
+    }
+
+    public static void PublishInteraction()
+    {
+        OnInteraction?.Invoke();
+    }
+
+    public static void PublishAddItemToInventory(Item item)
+    {
+        OnAddItemToIntentory?.Invoke(item);
     }
 }

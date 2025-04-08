@@ -6,7 +6,7 @@ namespace Player
     public class MovementController : MonoBehaviour
     {
         [Header("Player")]
-        [SerializeField] private PlayerController _player;
+        [SerializeField] private PlayerComponent _player;
 
         [Header("Movement")]
         [SerializeField] private CharacterController _characterController;

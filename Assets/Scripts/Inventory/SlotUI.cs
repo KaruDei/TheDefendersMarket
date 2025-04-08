@@ -11,13 +11,13 @@ public class SlotUI : MonoBehaviour
 
     private Slot _slot;
     
-    private Color baseColor;
-    private Color emptyColor;
+    private Color _baseColor;
+    private Color _emptyColor;
 
     private void Start()
     {
-        baseColor = Color.white;
-        emptyColor = Color.clear;
+        _baseColor = Color.white;
+        _emptyColor = Color.clear;
     }
 
     public void SetSlot(Slot slot)
@@ -29,7 +29,7 @@ public class SlotUI : MonoBehaviour
         if (_slot.ScriptableItem != null)
         {
             _image.sprite = _slot.ScriptableItem.Sprite;
-            _image.color = baseColor;
+            _image.color = _baseColor;
             _countText.text = $"{_slot.Capacity}";
         }
         else
@@ -41,7 +41,7 @@ public class SlotUI : MonoBehaviour
     public void ClearSlot()
     {
         _image.sprite = null;
-        _image.color = emptyColor;
+        _image.color = _emptyColor;
         _countText.text = string.Empty;
     }
 }

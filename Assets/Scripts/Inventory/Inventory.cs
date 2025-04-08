@@ -123,4 +123,28 @@ public class Inventory : MonoBehaviour
 
         return count == 0;
     }
+
+    private void AddItemToInventory(Item item)
+    {
+        if (item == null || item.ScriptableItem == null) return;
+
+        int count = AddItem(item.ScriptableItem, item.ItemCount);
+
+        if (count == 0)
+            item.RemoveItem(item.ItemCount);
+        else if (count > 0)
+            item.RemoveItem(item.ItemCount - count);
+        else
+            Debug.LogError("Count < 0");
+    }
+
+    private void OnEnable()
+    {
+        EventBus.OnAddItemToIntentory += AddItemToInventory;
+    }
+
+    private void OnDisable()
+    {
+        EventBus.OnAddItemToIntentory -= AddItemToInventory;
+    }
 }

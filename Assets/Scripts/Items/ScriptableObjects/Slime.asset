@@ -22,4 +22,4 @@ MonoBehaviour:
   _maxDropCount: 10
   _price: 5
   _sprite: {fileID: 21300000, guid: 06012b47fc349874e9d76f46a10c18e6, type: 3}
-  _prefab: {fileID: 0}
+  _prefab: {fileID: 8718196478650596433, guid: 36f2eb8f7c6216e4cbc2d4797e4efe84, type: 3}

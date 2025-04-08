@@ -16,7 +16,7 @@ public class InventoryUI : MonoBehaviour
         if (CheckInventorySlotsCount())
         {
             for (int i = 0; i < _slotsUI.Count; i++)
-            _slotsUI[i].SetSlot(_inventory.Slots[i]);
+                _slotsUI[i].SetSlot(_inventory.Slots[i]);
         }
         else
         {

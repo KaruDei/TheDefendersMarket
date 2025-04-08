@@ -6,7 +6,7 @@ namespace Player
     public class HelthBar : MonoBehaviour
     {
         [Header("Player")]
-        [SerializeField] private PlayerController _player;
+        [SerializeField] private PlayerComponent _player;
 
         [Header("Helth Bar")]
         [SerializeField] private Image _healthBar;
