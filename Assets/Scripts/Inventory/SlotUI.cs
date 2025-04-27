@@ -4,44 +4,40 @@ using UnityEngine.UI;
 
 public class SlotUI : MonoBehaviour
 {
-
     [Header("Slot UI Components")]
-    [SerializeField] private Image _image;
-    [SerializeField] private TextMeshProUGUI _countText;
+    [SerializeField, Tooltip("Компонент изображения")] private Image _image;
+    [SerializeField, Tooltip("Текст количества предметов")] private TextMeshProUGUI _textItemCount;
 
-    private Slot _slot;
-    
-    private Color _baseColor;
-    private Color _emptyColor;
+    [Header("Slot")]
+    [SerializeField, Tooltip("Слот")] private Slot _slot;
 
-    private void Start()
-    {
-        _baseColor = Color.white;
-        _emptyColor = Color.clear;
-    }
+    private Color _baseColor = Color.white;
+    private Color _emptyColor = Color.clear;
 
-    public void SetSlot(Slot slot)
+    /// <summary>
+    /// Метод заполняющий слот
+    /// </summary>
+    /// <param name="slot">Ссылка на Slot с которого будет браться информация</param>
+    public void SlotUISetup(Slot slot)
     {
         if (slot == null) return;
 
         _slot = slot;
-
-        if (_slot.ScriptableItem != null)
+        
+        if (_slot.Item != null)
         {
-            _image.sprite = _slot.ScriptableItem.Sprite;
+            _image.sprite = _slot.Item.Sprite;
             _image.color = _baseColor;
-            _countText.text = $"{_slot.Capacity}";
+
+            if (_slot.ItemsCount == 1) 
+                _textItemCount.text = string.Empty;
+            else 
+                _textItemCount.text = _slot.ItemsCount.ToString();
         }
         else
         {
-            ClearSlot();
+            _image.color = _emptyColor;
+            _textItemCount.text = string.Empty;
         }
-    }
-
-    public void ClearSlot()
-    {
-        _image.sprite = null;
-        _image.color = _emptyColor;
-        _countText.text = string.Empty;
     }
 }

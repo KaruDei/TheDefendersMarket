@@ -3,48 +3,65 @@ using UnityEngine;
 [System.Serializable]
 public class Slot
 {
-    [SerializeField] private ScriptableItem _scriptableItem;
-    [SerializeField] private int _capacity;
+    [Header("Slot Settings")]
+    [SerializeField, Tooltip("Предмет")] private ScriptableItem _item = null;
+    [SerializeField, Tooltip("Количество предметов")] private int _itemsCount = 0;
 
-    public bool IsFull;
+    public ScriptableItem Item => _item;
+    public int ItemsCount => _itemsCount;
 
-    public ScriptableItem ScriptableItem => _scriptableItem;
-    public int Capacity => _capacity;
-
-    public void SetSlot(ScriptableItem scriptableItem, int count = 1)
+    /// <summary>
+    /// Метод заполняющий слот
+    /// </summary>
+    /// <param name="item">Предмет типа Scriptable Item</param>
+    /// <param name="itemsCount">Количество предметов</param>
+    public void SlotSetup(ScriptableItem item, int itemsCount = 1)
     {
-        if (scriptableItem == null || count <= 0) return;
-        _scriptableItem = scriptableItem;
-        _capacity = count;
+        if (item == null || itemsCount <= 0 || item.MaxSlotCapacity < itemsCount) return;
+        _item = item;
+        _itemsCount = itemsCount;
     }
 
+    /// <summary>
+    /// Метод очищающий слот
+    /// </summary>
     public void ClearSlot()
     {
-        _scriptableItem = null;
-        _capacity = 0;
+        _item = null;
+        _itemsCount = 0;
     }
 
+    /// <summary>
+    /// Метод добавления предмета в слот
+    /// </summary>
+    /// <param name="count">Количество добавляемых предметов</param>
+    /// <returns>Возвращает значение типа bool указываюшее на успешность выполнения</returns>
     public bool AddItem(int count = 1)
     {
-        if (count <= 0 || _scriptableItem == null) return false;
+        if (_item == null || count <= 0) return false;
 
-        if (_capacity + count <= _scriptableItem.MaxSlotCapacity)
-            _capacity += count;
+        if (_itemsCount + count <= _item.MaxSlotCapacity)
+            _itemsCount += count;
         else
             return false;
 
         return true;
     }
 
+    /// <summary>
+    /// Метод удаления предмета из слота
+    /// </summary>
+    /// <param name="count">Количество удаляемых предметов</param>
+    /// <returns>Возвращает значение типа bool указываюшее на успешность выполнения</returns>
     public bool RemoveItem(int count = 1)
     {
-        if (count <= 0 || _scriptableItem == null) return false;
+        if (count <= 0 || _item == null) return false;
 
-        if (_capacity - count > 0)
+        if (_itemsCount - count > 0)
         {
-            _capacity -= count;
+            _itemsCount -= count;
         }
-        else if (_capacity - count == 0)
+        else if (_itemsCount - count == 0)
         {
             ClearSlot();
         }
@@ -54,8 +71,12 @@ public class Slot
         return true;
     }
 
+    /// <summary>
+    /// Метод получения доступного количества мест
+    /// </summary>
+    /// <returns>Возвращает количество доступных мест</returns>
     public int GetAvailableQuantity()
     {
-        return _scriptableItem.MaxSlotCapacity - _capacity;
+        return _item != null ? _item.MaxSlotCapacity - _itemsCount : 0;
     }
 }

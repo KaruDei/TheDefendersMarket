@@ -1,30 +1,33 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Item", menuName = "Data/Items", order = 0)]
+[CreateAssetMenu(fileName = "Item", menuName = "Data/Item/Item")]
 public class ScriptableItem : ScriptableObject
 {
     [Header("Item Info")]
-    [SerializeField] private string _name;
-    [SerializeField] private string _description;
+    [SerializeField, Tooltip("Название предмета")] private string _name;
+    [SerializeField, TextArea, Tooltip("Описание предмета")] private string _description;
+    
+    [Header("Item Rank")]
+    [SerializeField, Tooltip("Ранг предмета")] private Rank _itemRank;
 
     [Header("Item Slot Settings")]
-    [SerializeField] private int _maxSlotCapacity;
+    [SerializeField, Tooltip("Максимальное количество предметов в стаке")] private int _maxStackCapacity;
 
     [Header("Item Drop Settings")]
-    [SerializeField, Range(1, 10)] private int _maxDropCount;
+    [SerializeField, Range(1, 10), Tooltip("Максимальное количество выпадаемых предметов")] private int _maxDropCount;
 
     [Header("Item Price")]
-    [SerializeField] private float _price;
+    [SerializeField, Tooltip("Цена")] private float _price;
 
     [Header("Item Sprite")]
-    [SerializeField] private Sprite _sprite;
+    [SerializeField, Tooltip("Изображение")] private Sprite _sprite;
 
     [Header("Item Object")]
-    [SerializeField] private GameObject _prefab;
+    [SerializeField, Tooltip("Игровой объект")] private GameObject _prefab;
 
     public string Name => _name;
     public string Description => _description;
-    public int MaxSlotCapacity => _maxSlotCapacity;
+    public int MaxSlotCapacity => _maxStackCapacity;
     public int MaxDropCount => _maxDropCount;
     public float Price => _price;
     public Sprite Sprite => _sprite;

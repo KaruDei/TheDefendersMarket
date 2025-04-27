@@ -10,6 +10,7 @@ public static class EventBus
     public static event Action<Inventory> OnInventoryIsFull;
     public static event Action<Item> OnAddItemToIntentory;
     public static event Action OnInteraction;
+    public static event Action<Item> OnItemUse;
 
     public static void PublishPlayerDie(PlayerComponent player)
     {
@@ -44,5 +45,10 @@ public static class EventBus
     public static void PublishAddItemToInventory(Item item)
     {
         OnAddItemToIntentory?.Invoke(item);
+    }
+
+    public static void PublishItemUse(Item item)
+    {
+        OnItemUse?.Invoke(item);
     }
 }

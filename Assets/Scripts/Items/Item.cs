@@ -1,30 +1,34 @@
 using UnityEngine;
 
-public class Item : MonoBehaviour, IInteractable
+public class Item : MonoBehaviour, IInteractable, IUseable
 {
+    [Header("Scriptable Item")]
     [SerializeField] private ScriptableItem _scriptableItem;
 
-    public ScriptableItem ScriptableItem => _scriptableItem;
+    [Header("Events")]
+    [SerializeField] private ItemGameEvent _onItemUsed;
 
+    [Header("Item Count")]
     public int ItemCount;
-
-    private void Start()
-    {
-        ItemCount = Random.Range(1, _scriptableItem.MaxDropCount);
-    }
+    
+    public ScriptableItem ScriptableItem => _scriptableItem;
 
     public void RemoveItem(int count = 1)
     {
         if (count > ItemCount || count < 0) return;
-        
+
         ItemCount -= count;
-        if (ItemCount == 0) 
+        if (ItemCount == 0)
             Destroy(gameObject);
     }
 
     public void Interact()
     {
-        Debug.Log($"{gameObject.name} Interact");
-        EventBus.PublishAddItemToInventory(this);
+        
+    }
+
+    public void Use()
+    {
+        _onItemUsed.Raise(this);
     }
 }
