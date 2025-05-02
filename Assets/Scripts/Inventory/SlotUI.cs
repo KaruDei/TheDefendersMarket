@@ -36,6 +36,7 @@ public class SlotUI : MonoBehaviour
         }
         else
         {
+            _image.sprite = null;
             _image.color = _emptyColor;
             _textItemCount.text = string.Empty;
         }

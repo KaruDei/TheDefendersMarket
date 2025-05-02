@@ -1,4 +1,1 @@
-public class ItemGameEventListener : GameEventListener<Item>
-{
-    
-}
+public class ItemGameEventListener : GameEventListener<Item> { }

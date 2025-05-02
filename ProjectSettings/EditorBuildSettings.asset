@@ -9,5 +9,5 @@ EditorBuildSettings:
     path: Assets/Scenes/TowerDefense.unity
     guid: 99c9720ab356a0642a771bea13969a05
   m_configObjects:
-    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 908d8f1c504a6e04cb7073b40d14c818, type: 3}
+    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: af1a34e919b16034c97533b07453a66e, type: 3}
   m_UseUCBPForAssetBundles: 0

@@ -1,4 +1,1 @@
-public class IntGameEventListener : GameEventListener<int>
-{
-    
-}
+public class IntGameEventListener : GameEventListener<int> { }
