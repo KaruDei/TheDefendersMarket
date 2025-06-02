@@ -5,21 +5,23 @@ using UnityEngine.InputSystem;
 public class InputManager : MonoBehaviour
 {
     [Header("PlayerInput")]
-    [SerializeField] private PlayerInput _playerInput;
+    [SerializeField, Tooltip("Компонент PlayerInput")] private PlayerInput _playerInput;
 
     [Header("Maps")]
-    [SerializeField] private string _playerMapName = "Player";
-    [SerializeField] private string _uiMapName = "UI";
+    [SerializeField, Tooltip("Название карты действий игрока")] private string _playerMapName = "Player";
+    [SerializeField, Tooltip("Название карты действий UI")] private string _uiMapName = "UI";
 
     [Header("Events")]
-    [SerializeField] private VoidGameEvent _attackGameEvent;
-    [SerializeField] private BoolGameEvent _aimGameEvent;
-    [SerializeField] private VoidGameEvent _interactGameEvent;
-    [SerializeField] private VoidGameEvent _jumpGameEvent;
-    [SerializeField] private VoidGameEvent _pauseGameEvent;
-    [SerializeField] private VoidGameEvent _inventoryGameEvent;
-    [SerializeField] private VoidGameEvent _previousGameEvent;
-    [SerializeField] private VoidGameEvent _nextGameEvent;
+    [SerializeField, Tooltip("Событие смены текущего устройства ввода")] private StringGameEvent _switchCurrentDevice;
+    //[SerializeField, Tooltip("Событие смены карты управления")] private StringGameEvent _switchMapGameEvent;
+    [SerializeField, Tooltip("Событие атаки")] private VoidGameEvent _attackGameEvent;
+    [SerializeField, Tooltip("Событие прицеливания")] private BoolGameEvent _aimGameEvent;
+    [SerializeField, Tooltip("Событие взаимодействия")] private VoidGameEvent _interactGameEvent;
+    [SerializeField, Tooltip("Событие прыжка")] private VoidGameEvent _jumpGameEvent;
+    [SerializeField, Tooltip("Событие паузы")] private VoidGameEvent _pauseGameEvent;
+    [SerializeField, Tooltip("Событие открытия инвентаря")] private VoidGameEvent _inventoryGameEvent;
+    [SerializeField, Tooltip("Событие выбора предыдущего элемента")] private VoidGameEvent _previousGameEvent;
+    [SerializeField, Tooltip("Событие выбора следующего элемента")] private VoidGameEvent _nextGameEvent;
 
     private InputActionMap _playerMap;
     private InputActionMap _uiMap;
@@ -42,6 +44,9 @@ public class InputManager : MonoBehaviour
     public Vector2 Look {  get; private set; }
     public bool Sprint {  get; private set; }
 
+    /// <summary>
+    /// Кэширование полей
+    /// </summary>
     private void Awake()
     {
         if (_playerInput == null) return;
@@ -63,22 +68,52 @@ public class InputManager : MonoBehaviour
         _previousAction = _playerMap.FindAction("Previous");
     }
 
-    private void Start()
-    {
-        //HideCursor();
-    }
-
     private void OnEnable()
     {
+        _playerInput.onControlsChanged += ControlChange;
+
         _currentMapName = string.IsNullOrEmpty(_currentMapName) ? _playerMapName : _currentMapName;
-        _playerInput.SwitchCurrentActionMap(_currentMapName);
+        SwitchActionMap(_currentMapName);
         BindActions();
     }
 
     private void OnDisable()
     {
+        _playerInput.onControlsChanged -= ControlChange;
+
         _currentMapName = _playerInput.currentActionMap.name;
         UnbindActions();
+    }
+
+    /// <summary>
+    /// Метод, сообщающий, что изменилось утройство ввода.
+    /// </summary>
+    /// <param name="playerInput">Принимает значение типа PlayerInput</param>
+    private void ControlChange(PlayerInput playerInput)
+    {
+        if (playerInput.currentControlScheme == "Gamepad")
+        {
+            _switchCurrentDevice.Raise("Gamepad");
+        }
+        else if (playerInput.currentControlScheme == "Keyboard&Mouse")
+        {
+            _switchCurrentDevice.Raise("Keyboard&Mouse");
+        }
+    }
+
+    /// <summary>
+    /// Метод преключения карты действий.
+    /// </summary>
+    /// <param name="mapName">Принимает название карты действий</param>
+    public void SwitchActionMap(string mapName)
+    {
+        if (mapName != _playerMapName && mapName != _uiMapName)
+        {
+            Debug.LogWarning("Нет карты действий с таким названием!");
+            return;
+        }
+
+        _playerInput.SwitchCurrentActionMap(mapName);
     }
 
     private void BindActions()
@@ -156,16 +191,4 @@ public class InputManager : MonoBehaviour
         else if (context.canceled)
             Sprint = false;
     }
-
-    //public static void HideCursor()
-    //{
-    //    Cursor.visible = false;
-    //    Cursor.lockState = CursorLockMode.Locked;
-    //}
-
-    //public static void VisableCursor()
-    //{
-    //    Cursor.visible = true;
-    //    Cursor.lockState = CursorLockMode.Confined;
-    //}
 }

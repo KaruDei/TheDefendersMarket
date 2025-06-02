@@ -18,7 +18,7 @@ public class PlayerInteractComponent : MonoBehaviour
         _camera = Camera.main;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         CheckInteractableObjects();
     }
@@ -50,7 +50,7 @@ public class PlayerInteractComponent : MonoBehaviour
         }
     }
 
-    private void Interaction()
+    public void Interaction()
     {
         if (_interactableObject != null && _canInteract)
             _interactableObject.Interact();

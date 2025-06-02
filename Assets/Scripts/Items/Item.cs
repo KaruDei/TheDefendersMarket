@@ -7,6 +7,7 @@ public class Item : MonoBehaviour, IInteractable, IUseable
 
     [Header("Events")]
     [SerializeField] private ItemGameEvent _onItemUsed;
+    [SerializeField] private ItemGameEvent _onItemPickup;
 
     [Header("Item Count")]
     public int ItemCount;
@@ -24,7 +25,7 @@ public class Item : MonoBehaviour, IInteractable, IUseable
 
     public void Interact()
     {
-        
+        _onItemPickup.Raise(this);
     }
 
     public void Use()

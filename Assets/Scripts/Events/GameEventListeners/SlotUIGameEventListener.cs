@@ -1,0 +1,1 @@
+public class SlotUIGameEventListener : GameEventListener<SlotUI> { }

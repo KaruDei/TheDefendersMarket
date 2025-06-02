@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
@@ -9,224 +10,185 @@ public class Inventory : MonoBehaviour
     [Header("Slots")]
     [SerializeField, Tooltip("Слоты")] private List<Slot> _slots = new();
 
+    private SlotUI _selectedSlot;
+
     public List<Slot> Slots => _slots;
 
-    /// <summary>
-    /// Метод, добавляющий предмет в инвентарь
-    /// </summary>
-    /// <param name="item">Ссылка на объект типа Item</param>
+    private void Start()
+    {
+        _inventoryUI.UpdateUISlotsInfo();
+    }
+
     public void AddItem(Item item)
     {
         if (item == null) return;
 
-        List<Slot> slots = _slots.FindAll(slot => slot.Item == item.ScriptableItem && slot.GetAvailableQuantity() > 0);
-        foreach (Slot slot in slots)
-        {
-            int availableCount = slot.GetAvailableQuantity();
-            if (item.ItemCount <= availableCount)
-            {
-                slot.AddItem(item.ItemCount);
-                item.RemoveItem(item.ItemCount);
-                _inventoryUI.UpdateUISlotsInfo();
-                return;
-            }
-            else
-            {
-                slot.AddItem(availableCount);
-                item.RemoveItem(availableCount);
-                continue;
-            }
-        }
-
-        if (item.ItemCount > 0)
-        {
-            slots = _slots.FindAll(slot => slot.Item == null);
-            int availableCount = item.ScriptableItem.MaxSlotCapacity;
-            
-            foreach (Slot slot in slots)
-            {
-                if (item.ItemCount <= availableCount)
-                {
-                    slot.SlotSetup(item.ScriptableItem, item.ItemCount);
-                    item.RemoveItem(item.ItemCount);
-                    _inventoryUI.UpdateUISlotsInfo();
-                    return;
-                }
-                else
-                {
-                    slot.SlotSetup(item.ScriptableItem, item.ItemCount - availableCount);
-                    item.RemoveItem(item.ItemCount - availableCount);
-                    continue;
-                }
-            }
-        }
+        TryAddToExistingSlots(item);
+        TryAddToEmptySlots(item);
 
         _inventoryUI.UpdateUISlotsInfo();
     }
 
-    /// <summary>
-    /// Метод, добавляющий предмет в инвентарь
-    /// </summary>
-    /// <param name="item">Предмет типа Scriptable Item</param>
-    /// <param name="count">Количество добавляемых предметов</param>
     public void AddItem(ScriptableItem item, int count = 1)
     {
         if (item == null || count <= 0) return;
-
         if (!CanAddItem(item, count)) return;
 
-        List<Slot> slots = _slots.FindAll(slot => slot.Item == item && slot.GetAvailableQuantity() > 0);
-        foreach (Slot slot in slots)
-        {
-            int availableCount = slot.GetAvailableQuantity();
-            if (count <= availableCount)
-            {
-                slot.AddItem(count);
-                count = 0;
-                return;
-            }
-            else
-            {
-                slot.AddItem(availableCount);
-                count -= availableCount;
-                continue;
-            }
-        }
-
-        if (count > 0)
-        {
-            slots = _slots.FindAll(slot => slot.Item == null);
-            int availableCount = item.MaxSlotCapacity;
-
-            foreach (Slot slot in slots)
-            {
-                if (count <= availableCount)
-                {
-                    slot.SlotSetup(item, count);
-                    count = 0;
-                    _inventoryUI.UpdateUISlotsInfo();
-                    return;
-                }
-                else
-                {
-                    slot.SlotSetup(item, count - availableCount);
-                    count -= availableCount;
-                    continue;
-                }
-            }
-        }
+        TryAddToExistingSlots(item, ref count);
+        TryAddToEmptySlots(item, ref count);
 
         _inventoryUI.UpdateUISlotsInfo();
     }
 
-    /// <summary>
-    /// Метод удаляющий предмет из инвентаря
-    /// </summary>
-    /// <param name="item">Предмет типа Scriptable Item</param>
-    /// <param name="count">Количество удаляемых предметов</param>
     public void RemoveItem(ScriptableItem item, int count = 1)
     {
         if (item == null || count <= 0) return;
-
         if (!CanRemoveItem(item, count)) return;
 
-        List<Slot> slots = _slots.FindAll(slot => slot.Item == item);
-
-        foreach (Slot slot in slots)
+        foreach (Slot slot in _slots)
         {
-            if (count <= slot.ItemsCount)
-            {
-                slot.RemoveItem(count);
-                count = 0;
-                _inventoryUI.UpdateUISlotsInfo();
-                return;
-            }
-            else
-            {
-                count -= slot.ItemsCount;
-                slot.RemoveItem(slot.ItemsCount);
-                continue;
-            }
+            if (slot.Item != item) continue;
+
+            int amountToRemove = Mathf.Min(slot.ItemsCount, count);
+            slot.RemoveItem(amountToRemove);
+            count -= amountToRemove;
+
+            if (count == 0) break;
         }
 
         _inventoryUI.UpdateUISlotsInfo();
     }
 
-    /// <summary>
-    /// Метод проверяющий возможность добавления предметов в инвентарь
-    /// </summary>
-    /// <param name="item">Предмет типа Scriptable Item</param>
-    /// <param name="count">Количество добавляемых предметов</param>
-    /// <returns>Возвращает значение типа bool указывающее возможность добавления предметов</returns>
     public bool CanAddItem(ScriptableItem item, int count = 1)
     {
         if (item == null || count <= 0) return false;
 
-        List<Slot> slots = _slots.FindAll(slot => slot.Item == item && slot.GetAvailableQuantity() > 0);
-        foreach (Slot slot in slots)
+        int space = 0;
+
+        foreach (Slot slot in _slots)
         {
-            int availableCount = slot.GetAvailableQuantity();
-            if (count <= availableCount)
-            {
-                count = 0;
-                return true;
-            }
-            else
-            {
-                count -= availableCount;
-                continue;
-            }
+            if (slot.Item == item)
+                space += slot.GetAvailableQuantity();
         }
 
-        if (count > 0)
+        foreach (Slot slot in _slots)
         {
-            slots = _slots.FindAll(slot => slot.Item == null);
-            int availableCount = item.MaxSlotCapacity;
-
-            foreach (Slot slot in slots)
-            {
-                if (count <= availableCount)
-                {
-                    count = 0;
-                    return true;
-                }
-                else
-                {
-                    count -= availableCount;
-                    continue;
-                }
-            }
+            if (slot.Item == null)
+                space += item.MaxSlotCapacity;
         }
 
-        return count == 0;
+        return count <= space;
     }
 
-    /// <summary>
-    /// Метод проверяющий возможность удаления предметов из инвентаря
-    /// </summary>
-    /// <param name="item">Предмет типа Scriptable Item</param>
-    /// <param name="count">Количество удаляемых предметов</param>
-    /// <returns>Возвращает значение типа bool указывающее возможность удаления предметов</returns>
     public bool CanRemoveItem(ScriptableItem item, int count = 1)
     {
         if (item == null || count <= 0) return false;
 
-        List<Slot> slots = _slots.FindAll(slot => slot.Item == item);
+        int total = 0;
 
-        foreach (Slot slot in slots)
+        foreach (Slot slot in _slots)
         {
-            if (count <= slot.ItemsCount)
-            {
-                count = 0;
-                return true;
-            }
-            else
-            {
-                count -= slot.ItemsCount;
-                continue;
-            }
+            if (slot.Item == item)
+                total += slot.ItemsCount;
         }
 
-        return count == 0;
+        return count <= total;
+    }
+
+    private void TryAddToExistingSlots(Item item)
+    {
+        foreach (Slot slot in _slots)
+        {
+            if (slot.Item != item.ScriptableItem || slot.GetAvailableQuantity() <= 0) continue;
+
+            int amountToAdd = Mathf.Min(item.ItemCount, slot.GetAvailableQuantity());
+            slot.AddItem(amountToAdd);
+            item.RemoveItem(amountToAdd);
+
+            if (item == null || item.ItemCount == 0) break;
+        }
+    }
+
+    private void TryAddToExistingSlots(ScriptableItem item, ref int count)
+    {
+        foreach (Slot slot in _slots)
+        {
+            if (slot.Item != item || slot.GetAvailableQuantity() <= 0) continue;
+
+            int amountToAdd = Mathf.Min(count, slot.GetAvailableQuantity());
+            slot.AddItem(amountToAdd);
+            count -= amountToAdd;
+
+            if (count == 0) break;
+        }
+    }
+
+    private void TryAddToEmptySlots(Item item)
+    {
+        foreach (Slot slot in _slots)
+        {
+            if (slot.Item != null) continue;
+
+            int amountToAdd = Mathf.Min(item.ItemCount, item.ScriptableItem.MaxSlotCapacity);
+            slot.SlotSetup(item.ScriptableItem, amountToAdd);
+            item.RemoveItem(amountToAdd);
+
+            if (item == null || item.ItemCount == 0) break;
+        }
+    }
+
+    private void TryAddToEmptySlots(ScriptableItem item, ref int count)
+    {
+        foreach (Slot slot in _slots)
+        {
+            if (slot.Item != null) continue;
+
+            int amountToAdd = Mathf.Min(count, item.MaxSlotCapacity);
+            slot.SlotSetup(item, amountToAdd);
+            count -= amountToAdd;
+
+            if (count == 0) break;
+        }
+    }
+
+    public void SelectSlot(SlotUI slotUI)
+    {
+        if (slotUI == null) return;
+
+        if (_selectedSlot == slotUI)
+        {
+            _selectedSlot.SetSelect(false);
+            _selectedSlot = null;
+            return;
+        }
+
+        if (_selectedSlot == null)
+        {
+            _selectedSlot = slotUI;
+            _selectedSlot.SetSelect(true);
+        }
+        else
+        {
+            _selectedSlot.SetSelect(false);
+
+            Slot tempSlot = new Slot();
+            tempSlot.SlotSetup(slotUI.Slot.Item, slotUI.Slot.ItemsCount);
+
+            if (_selectedSlot.Slot.Item == null)
+                _slots[slotUI.transform.GetSiblingIndex()].ClearSlot();
+            else
+                _slots[slotUI.transform.GetSiblingIndex()].SlotSetup(_selectedSlot.Slot.Item, _selectedSlot.Slot.ItemsCount);
+
+            _inventoryUI.UpdateUISlotInfo(slotUI.transform.GetSiblingIndex());
+
+            if (tempSlot.Item == null)
+                _slots[_selectedSlot.transform.GetSiblingIndex()].ClearSlot();
+            else
+                _slots[_selectedSlot.transform.GetSiblingIndex()].SlotSetup(tempSlot.Item, tempSlot.ItemsCount);
+
+            _inventoryUI.UpdateUISlotInfo(_selectedSlot.transform.GetSiblingIndex());
+
+            _selectedSlot = null;
+        }
     }
 }

@@ -151,4 +151,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _scriptableItem: {fileID: 11400000, guid: 3fa0c63c6f147da47ac214a04b3d219b, type: 2}
   _onItemUsed: {fileID: 11400000, guid: 323ec63173c837f4a81cd1de77c21e15, type: 2}
+  _onItemPickup: {fileID: 11400000, guid: 46f08c7ffd5b56147a628d8200117442, type: 2}
   ItemCount: 1
