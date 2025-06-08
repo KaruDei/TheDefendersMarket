@@ -1,13 +1,13 @@
-using TMPro;
+п»їusing TMPro;
 using UnityEngine;
 
 public class ItemInfoField : MonoBehaviour
 {
-    [SerializeField, Tooltip("Поле названия")] private TextMeshProUGUI _itemName;
-    [SerializeField, Tooltip("Поле описания")] private TextMeshProUGUI _itemDescription;
+    [SerializeField, Tooltip("РџРѕР»Рµ РЅР°Р·РІР°РЅРёСЏ")] private TextMeshProUGUI _itemName;
+    [SerializeField, Tooltip("РџРѕР»Рµ РѕРїРёСЃР°РЅРёСЏ")] private TextMeshProUGUI _itemDescription;
 
     /// <summary>
-    /// Отчистка текста при старте.
+    /// РћС‚С‡РёСЃС‚РєР° С‚РµРєСЃС‚Р° РїСЂРё СЃС‚Р°СЂС‚Рµ.
     /// </summary>
     private void Start()
     {
@@ -16,10 +16,10 @@ public class ItemInfoField : MonoBehaviour
     }
 
     /// <summary>
-    /// Метод, изменяющий информацию о выбранном предмете.
+    /// РњРµС‚РѕРґ, РёР·РјРµРЅСЏСЋС‰РёР№ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ РІС‹Р±СЂР°РЅРЅРѕРј РїСЂРµРґРјРµС‚Рµ.
     /// </summary>
-    /// <param name="itemName">Название предмета.</param>
-    /// <param name="itemDescription">Описание предмета.</param>
+    /// <param name="itemName">РќР°Р·РІР°РЅРёРµ РїСЂРµРґРјРµС‚Р°</param>
+    /// <param name="itemDescription">РћРїРёСЃР°РЅРёРµ РїСЂРµРґРјРµС‚Р°</param>
     public void SetItemInfo(string itemName, string itemDescription)
     {
         _itemName.text = itemName;
@@ -27,10 +27,10 @@ public class ItemInfoField : MonoBehaviour
     }
 
     /// <summary>
-    /// Метод, изменяющий информацию о выбранном предмете.
-    /// Вызов происходит через событие SlotGameEvent.
+    /// РњРµС‚РѕРґ, РёР·РјРµРЅСЏСЋС‰РёР№ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ РІС‹Р±СЂР°РЅРЅРѕРј РїСЂРµРґРјРµС‚Рµ.
+    /// Р’С‹Р·РѕРІ РїСЂРѕРёСЃС…РѕРґРёС‚ С‡РµСЂРµР· СЃРѕР±С‹С‚РёРµ SlotGameEvent.
     /// </summary>
-    /// <param name="slot">Принимает данные типа Slot.</param>
+    /// <param name="slot">РЎР»РѕС‚</param>
     public void SetItemInfo(Slot slot)
     {
         if (slot == null || slot.Item == null)

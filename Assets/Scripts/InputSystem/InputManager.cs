@@ -1,3 +1,4 @@
+п»їusing System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -5,23 +6,24 @@ using UnityEngine.InputSystem;
 public class InputManager : MonoBehaviour
 {
     [Header("PlayerInput")]
-    [SerializeField, Tooltip("Компонент PlayerInput")] private PlayerInput _playerInput;
+    [SerializeField, Tooltip("РљРѕРјРїРѕРЅРµРЅС‚ PlayerInput")] private PlayerInput _playerInput;
 
     [Header("Maps")]
-    [SerializeField, Tooltip("Название карты действий игрока")] private string _playerMapName = "Player";
-    [SerializeField, Tooltip("Название карты действий UI")] private string _uiMapName = "UI";
+    [SerializeField, Tooltip("РќР°Р·РІР°РЅРёРµ РєР°СЂС‚С‹ РґРµР№СЃС‚РІРёР№ РёРіСЂРѕРєР°")] private string _playerMapName = "Player";
+    [SerializeField, Tooltip("РќР°Р·РІР°РЅРёРµ РєР°СЂС‚С‹ РґРµР№СЃС‚РІРёР№ UI")] private string _uiMapName = "UI";
 
     [Header("Events")]
-    [SerializeField, Tooltip("Событие смены текущего устройства ввода")] private StringGameEvent _switchCurrentDevice;
-    //[SerializeField, Tooltip("Событие смены карты управления")] private StringGameEvent _switchMapGameEvent;
-    [SerializeField, Tooltip("Событие атаки")] private VoidGameEvent _attackGameEvent;
-    [SerializeField, Tooltip("Событие прицеливания")] private BoolGameEvent _aimGameEvent;
-    [SerializeField, Tooltip("Событие взаимодействия")] private VoidGameEvent _interactGameEvent;
-    [SerializeField, Tooltip("Событие прыжка")] private VoidGameEvent _jumpGameEvent;
-    [SerializeField, Tooltip("Событие паузы")] private VoidGameEvent _pauseGameEvent;
-    [SerializeField, Tooltip("Событие открытия инвентаря")] private VoidGameEvent _inventoryGameEvent;
-    [SerializeField, Tooltip("Событие выбора предыдущего элемента")] private VoidGameEvent _previousGameEvent;
-    [SerializeField, Tooltip("Событие выбора следующего элемента")] private VoidGameEvent _nextGameEvent;
+    [SerializeField, Tooltip("РЎРѕР±С‹С‚РёРµ СЃРјРµРЅС‹ С‚РµРєСѓС‰РµРіРѕ СѓСЃС‚СЂРѕР№СЃС‚РІР° РІРІРѕРґР°")] private StringGameEvent _switchCurrentDevice;
+    //[SerializeField, Tooltip("РЎРѕР±С‹С‚РёРµ СЃРјРµРЅС‹ РєР°СЂС‚С‹ СѓРїСЂР°РІР»РµРЅРёСЏ")] private StringGameEvent _switchMapGameEvent;
+    [SerializeField, Tooltip("РЎРѕР±С‹С‚РёРµ Р°С‚Р°РєРё")] private VoidGameEvent _attackGameEvent;
+    [SerializeField, Tooltip("РЎРѕР±С‹С‚РёРµ РїСЂРёС†РµР»РёРІР°РЅРёСЏ")] private BoolGameEvent _aimGameEvent;
+    [SerializeField, Tooltip("РЎРѕР±С‹С‚РёРµ РІР·Р°РёРјРѕРґРµР№СЃС‚РІРёСЏ")] private VoidGameEvent _interactGameEvent;
+    [SerializeField, Tooltip("РЎРѕР±С‹С‚РёРµ РїСЂС‹Р¶РєР°")] private VoidGameEvent _jumpGameEvent;
+    [SerializeField, Tooltip("РЎРѕР±С‹С‚РёРµ РїР°СѓР·С‹")] private VoidGameEvent _pauseGameEvent;
+    [SerializeField, Tooltip("РЎРѕР±С‹С‚РёРµ РѕС‚РєСЂС‹С‚РёСЏ РёРЅРІРµРЅС‚Р°СЂСЏ")] private VoidGameEvent _inventoryGameEvent;
+    [SerializeField, Tooltip("РЎРѕР±С‹С‚РёРµ РІС‹Р±РѕСЂР° РїСЂРµРґС‹РґСѓС‰РµРіРѕ СЌР»РµРјРµРЅС‚Р°")] private VoidGameEvent _previousGameEvent;
+    [SerializeField, Tooltip("РЎРѕР±С‹С‚РёРµ РІС‹Р±РѕСЂР° СЃР»РµРґСѓСЋС‰РµРіРѕ СЌР»РµРјРµРЅС‚Р°")] private VoidGameEvent _nextGameEvent;
+    [SerializeField, Tooltip("РЎРѕР±С‹С‚РёРµ РІС‹Р±РѕСЂР° СЃР»РѕС‚РѕРІ (1-4)")] private StringGameEvent _selectSlot;
 
     private InputActionMap _playerMap;
     private InputActionMap _uiMap;
@@ -35,17 +37,17 @@ public class InputManager : MonoBehaviour
     private InputAction _inventoryAction;
     private InputAction _previousAction;
     private InputAction _nextAction;
-
+    private InputAction _selectSlotAction;
     private InputAction _moveAction;
     private InputAction _lookAction;
     private InputAction _sprintAction;
 
-    public Vector2 Move {  get; private set; }
-    public Vector2 Look {  get; private set; }
-    public bool Sprint {  get; private set; }
+    public Vector2 Move { get; private set; }
+    public Vector2 Look { get; private set; }
+    public bool Sprint { get; private set; }
 
     /// <summary>
-    /// Кэширование полей
+    /// РљСЌС€РёСЂРѕРІР°РЅРёРµ РїРѕР»РµР№
     /// </summary>
     private void Awake()
     {
@@ -66,6 +68,7 @@ public class InputManager : MonoBehaviour
         _inventoryAction = _playerMap.FindAction("Inventory");
         _nextAction = _playerMap.FindAction("Next");
         _previousAction = _playerMap.FindAction("Previous");
+        _selectSlotAction = _playerMap.FindAction("SelectSlot");
     }
 
     private void OnEnable()
@@ -86,30 +89,26 @@ public class InputManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Метод, сообщающий, что изменилось утройство ввода.
+    /// РњРµС‚РѕРґ, СЃРѕРѕР±С‰Р°СЋС‰РёР№, С‡С‚Рѕ РёР·РјРµРЅРёР»РѕСЃСЊ СѓС‚СЂРѕР№СЃС‚РІРѕ РІРІРѕРґР°.
     /// </summary>
-    /// <param name="playerInput">Принимает значение типа PlayerInput</param>
+    /// <param name="playerInput">РџСЂРёРЅРёРјР°РµС‚ Р·РЅР°С‡РµРЅРёРµ С‚РёРїР° PlayerInput</param>
     private void ControlChange(PlayerInput playerInput)
     {
         if (playerInput.currentControlScheme == "Gamepad")
-        {
             _switchCurrentDevice.Raise("Gamepad");
-        }
         else if (playerInput.currentControlScheme == "Keyboard&Mouse")
-        {
             _switchCurrentDevice.Raise("Keyboard&Mouse");
-        }
     }
 
     /// <summary>
-    /// Метод преключения карты действий.
+    /// РњРµС‚РѕРґ РїСЂРµРєР»СЋС‡РµРЅРёСЏ РєР°СЂС‚С‹ РґРµР№СЃС‚РІРёР№.
     /// </summary>
-    /// <param name="mapName">Принимает название карты действий</param>
+    /// <param name="mapName">РџСЂРёРЅРёРјР°РµС‚ РЅР°Р·РІР°РЅРёРµ РєР°СЂС‚С‹ РґРµР№СЃС‚РІРёР№</param>
     public void SwitchActionMap(string mapName)
     {
         if (mapName != _playerMapName && mapName != _uiMapName)
         {
-            Debug.LogWarning("Нет карты действий с таким названием!");
+            Debug.LogWarning("РќРµС‚ РєР°СЂС‚С‹ РґРµР№СЃС‚РІРёР№ СЃ С‚Р°РєРёРј РЅР°Р·РІР°РЅРёРµРј!");
             return;
         }
 
@@ -143,8 +142,10 @@ public class InputManager : MonoBehaviour
         _nextAction.performed += _ => _nextGameEvent.Raise();
 
         _previousAction.performed += _ => _previousGameEvent.Raise();
+
+        _selectSlotAction.performed += ctx => _selectSlot.Raise(ctx.control.name);
     }
-    
+
     private void UnbindActions()
     {
         _moveAction.performed -= OnMove;
@@ -172,6 +173,8 @@ public class InputManager : MonoBehaviour
         _nextAction.performed -= _ => _nextGameEvent.Raise();
 
         _previousAction.performed -= _ => _previousGameEvent.Raise();
+
+        _selectSlotAction.performed -= ctx => _selectSlot.Raise(ctx.control.name);
     }
 
     private void OnMove(InputAction.CallbackContext context)

@@ -1,4 +1,4 @@
-using TMPro;
+п»їusing TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -6,27 +6,27 @@ using UnityEngine.UI;
 public class SlotUI : MonoBehaviour, ISelectHandler
 {
     [Header("Slot UI Components")]
-    [SerializeField, Tooltip("Компонент изображения слота")] private Image _imageSlot;
-    [SerializeField, Tooltip("Компонент изображения предмета")] private Image _imageItem;
-    [SerializeField, Tooltip("Текст количества предметов")] private TextMeshProUGUI _textItemCount;
+    [SerializeField, Tooltip("РљРѕРјРїРѕРЅРµРЅС‚ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ СЃР»РѕС‚Р°")] private Image _imageSlot;
+    [SerializeField, Tooltip("РљРѕРјРїРѕРЅРµРЅС‚ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ РїСЂРµРґРјРµС‚Р°")] private Image _imageItem;
+    [SerializeField, Tooltip("РўРµРєСЃС‚ РєРѕР»РёС‡РµСЃС‚РІР° РїСЂРµРґРјРµС‚РѕРІ")] private TextMeshProUGUI _textItemCount;
 
     [Header("Slot UI Sprites")]
-    [SerializeField, Tooltip("Изображение слота")] private Sprite _slotBaseSprite;
-    [SerializeField, Tooltip("Изображение выделенного слота")] private Sprite _slotSelectedSprite;
+    [SerializeField, Tooltip("РР·РѕР±СЂР°Р¶РµРЅРёРµ СЃР»РѕС‚Р°")] private Sprite _slotBaseSprite;
+    [SerializeField, Tooltip("РР·РѕР±СЂР°Р¶РµРЅРёРµ РІС‹РґРµР»РµРЅРЅРѕРіРѕ СЃР»РѕС‚Р°")] private Sprite _slotSelectedSprite;
 
     [Header("Events")]
-    [SerializeField, Tooltip("Событие обновления поля информации о предмете")] private SlotGameEvent _onSlotInfo;
+    [SerializeField, Tooltip("РЎРѕР±С‹С‚РёРµ РѕР±РЅРѕРІР»РµРЅРёСЏ РїРѕР»СЏ РёРЅС„РѕСЂРјР°С†РёРё Рѕ РїСЂРµРґРјРµС‚Рµ")] private SlotGameEvent _onSlotInfo;
 
     [Header("Slot")]
-    [Tooltip("Ссылка на слот")] public Slot Slot;
+    [Tooltip("РЎСЃС‹Р»РєР° РЅР° СЃР»РѕС‚")] public Slot Slot;
 
     private Color _baseColor = Color.white;
     private Color _emptyColor = Color.clear;
 
     /// <summary>
-    /// Метод заполняющий слот.
+    /// РњРµС‚РѕРґ Р·Р°РїРѕР»РЅСЏСЋС‰РёР№ СЃР»РѕС‚.
     /// </summary>
-    /// <param name="slot">Ссылка на Slot с которого будет браться информация.</param>
+    /// <param name="slot">РЎСЃС‹Р»РєР° РЅР° Slot СЃ РєРѕС‚РѕСЂРѕРіРѕ Р±СѓРґРµС‚ Р±СЂР°С‚СЊСЃСЏ РёРЅС„РѕСЂРјР°С†РёСЏ</param>
     public void SlotUISetup(Slot slot)
     {
         if (slot == null) return;
@@ -52,9 +52,9 @@ public class SlotUI : MonoBehaviour, ISelectHandler
     }
 
     /// <summary>
-    /// Метод, меняющий вид слота в зависимости от выделения.
+    /// РњРµС‚РѕРґ, РјРµРЅСЏСЋС‰РёР№ РІРёРґ СЃР»РѕС‚Р° РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ РІС‹РґРµР»РµРЅРёСЏ.
     /// </summary>
-    /// <param name="state">Принимает bool значение указывающее на выделение.</param>
+    /// <param name="state">РџСЂРёРЅРёРјР°РµС‚ bool Р·РЅР°С‡РµРЅРёРµ СѓРєР°Р·С‹РІР°СЋС‰РµРµ РЅР° РІС‹РґРµР»РµРЅРёРµ.</param>
     public void SetSelect(bool state)
     {
         if (state)
@@ -63,6 +63,10 @@ public class SlotUI : MonoBehaviour, ISelectHandler
             _imageSlot.sprite = _slotBaseSprite;
     }
 
+    /// <summary>
+    /// РњРµС‚РѕРґ РѕС‚СЃР»РµР¶РёРІР°СЋС‰РёР№ РІС‹РґРµР»РµРЅРёРµ СЃР»РѕС‚Р° Рё СЃРѕРѕР±С‰Р°СЋС‰РёР№ РѕР± СЌС‚РѕРј.
+    /// </summary>
+    /// <param name="eventData"></param>
     public void OnSelect(BaseEventData eventData)
     {
         _onSlotInfo.Raise(Slot);

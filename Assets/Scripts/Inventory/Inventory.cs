@@ -1,24 +1,30 @@
-using System.Collections.Generic;
-using Unity.VisualScripting;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
     [Header("Inventory UI")]
-    [SerializeField, Tooltip("��������� IntentoryUI")] private InventoryUI _inventoryUI;
+    [SerializeField, Tooltip("Компонент IntentoryUI")] private InventoryUI _inventoryUI;
     
     [Header("Slots")]
-    [SerializeField, Tooltip("�����")] private List<Slot> _slots = new();
+    [SerializeField, Tooltip("Слоты")] private List<Slot> _slots = new();
 
     private SlotUI _selectedSlot;
 
     public List<Slot> Slots => _slots;
 
+    /// <summary>
+    /// Метод обновления UI слотов при начале игры.
+    /// </summary>
     private void Start()
     {
         _inventoryUI.UpdateUISlotsInfo();
     }
 
+    /// <summary>
+    /// Метод добавления предмета.
+    /// </summary>
+    /// <param name="item">Предмет</param>
     public void AddItem(Item item)
     {
         if (item == null) return;
@@ -29,6 +35,11 @@ public class Inventory : MonoBehaviour
         _inventoryUI.UpdateUISlotsInfo();
     }
 
+    /// <summary>
+    /// Метод добавления предмета.
+    /// </summary>
+    /// <param name="item">Предмет</param>
+    /// <param name="count">Количество предметов</param>
     public void AddItem(ScriptableItem item, int count = 1)
     {
         if (item == null || count <= 0) return;
@@ -40,6 +51,11 @@ public class Inventory : MonoBehaviour
         _inventoryUI.UpdateUISlotsInfo();
     }
 
+    /// <summary>
+    /// Метод удаления предмета.
+    /// </summary>
+    /// <param name="item">Предмет</param>
+    /// <param name="count">Количество предметов</param>
     public void RemoveItem(ScriptableItem item, int count = 1)
     {
         if (item == null || count <= 0) return;
@@ -59,6 +75,12 @@ public class Inventory : MonoBehaviour
         _inventoryUI.UpdateUISlotsInfo();
     }
 
+    /// <summary>
+    /// Метод проверяющий возможность добавления предмета.
+    /// </summary>
+    /// <param name="item">Предмет</param>
+    /// <param name="count">Количество предметов</param>
+    /// <returns>Возвращает значение типа bool.</returns>
     public bool CanAddItem(ScriptableItem item, int count = 1)
     {
         if (item == null || count <= 0) return false;
@@ -80,6 +102,12 @@ public class Inventory : MonoBehaviour
         return count <= space;
     }
 
+    /// <summary>
+    /// Метод проверяющий возможность удаления предмета.
+    /// </summary>
+    /// <param name="item">Предмет</param>
+    /// <param name="count">Количество предметов</param>
+    /// <returns>Возвращает занчение типа bool.</returns>
     public bool CanRemoveItem(ScriptableItem item, int count = 1)
     {
         if (item == null || count <= 0) return false;
@@ -95,6 +123,10 @@ public class Inventory : MonoBehaviour
         return count <= total;
     }
 
+    /// <summary>
+    /// Метод добавляющий предметы в существующие слоты.
+    /// </summary>
+    /// <param name="item">Предмет</param>
     private void TryAddToExistingSlots(Item item)
     {
         foreach (Slot slot in _slots)
@@ -109,6 +141,11 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Метод добавляющий предметы в существующие слоты.
+    /// </summary>
+    /// <param name="item">Предмет</param>
+    /// <param name="count">Количество предметов</param>
     private void TryAddToExistingSlots(ScriptableItem item, ref int count)
     {
         foreach (Slot slot in _slots)
@@ -123,6 +160,10 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Метод добавляющий предметы в пустые слоты.
+    /// </summary>
+    /// <param name="item">Предмет</param>
     private void TryAddToEmptySlots(Item item)
     {
         foreach (Slot slot in _slots)
@@ -137,6 +178,11 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Метод добавляющий предметы в пустые слоты.
+    /// </summary>
+    /// <param name="item">Предмет</param>
+    /// <param name="count">Количество предметов</param>
     private void TryAddToEmptySlots(ScriptableItem item, ref int count)
     {
         foreach (Slot slot in _slots)
@@ -151,6 +197,11 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Метод реализующий логику выбора слота.
+    /// Вызов происходит через событие SlotUIGameEvent.
+    /// </summary>
+    /// <param name="slotUI">Слот</param>
     public void SelectSlot(SlotUI slotUI)
     {
         if (slotUI == null) return;
@@ -171,23 +222,31 @@ public class Inventory : MonoBehaviour
         {
             _selectedSlot.SetSelect(false);
 
-            Slot tempSlot = new Slot();
-            tempSlot.SlotSetup(slotUI.Slot.Item, slotUI.Slot.ItemsCount);
-
-            if (_selectedSlot.Slot.Item == null)
-                _slots[slotUI.transform.GetSiblingIndex()].ClearSlot();
+            if (slotUI.Slot.Item == _selectedSlot.Slot.Item && slotUI.Slot.GetAvailableQuantity() > 0)
+            {
+                int amount = Mathf.Min(slotUI.Slot.GetAvailableQuantity(), _selectedSlot.Slot.ItemsCount);
+                slotUI.Slot.AddItem(amount);
+                _selectedSlot.Slot.RemoveItem(amount);
+            }
             else
-                _slots[slotUI.transform.GetSiblingIndex()].SlotSetup(_selectedSlot.Slot.Item, _selectedSlot.Slot.ItemsCount);
+            {
+                Slot tempSlot = new();
+                tempSlot.SlotSetup(slotUI.Slot.Item, slotUI.Slot.ItemsCount);
+
+                if (_selectedSlot.Slot.Item == null)
+                    _slots[slotUI.transform.GetSiblingIndex()].ClearSlot();
+                else
+                    _slots[slotUI.transform.GetSiblingIndex()].SlotSetup(_selectedSlot.Slot.Item, _selectedSlot.Slot.ItemsCount);
+
+                if (tempSlot.Item == null)
+                    _slots[_selectedSlot.transform.GetSiblingIndex()].ClearSlot();
+                else
+                    _slots[_selectedSlot.transform.GetSiblingIndex()].SlotSetup(tempSlot.Item, tempSlot.ItemsCount);
+
+            }
 
             _inventoryUI.UpdateUISlotInfo(slotUI.transform.GetSiblingIndex());
-
-            if (tempSlot.Item == null)
-                _slots[_selectedSlot.transform.GetSiblingIndex()].ClearSlot();
-            else
-                _slots[_selectedSlot.transform.GetSiblingIndex()].SlotSetup(tempSlot.Item, tempSlot.ItemsCount);
-
             _inventoryUI.UpdateUISlotInfo(_selectedSlot.transform.GetSiblingIndex());
-
             _selectedSlot = null;
         }
     }

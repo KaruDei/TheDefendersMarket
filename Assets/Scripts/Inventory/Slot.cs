@@ -1,20 +1,20 @@
-using UnityEngine;
+п»їusing UnityEngine;
 
 [System.Serializable]
 public class Slot
 {
     [Header("Slot Settings")]
-    [SerializeField, Tooltip("Предмет")] private ScriptableItem _item = null;
-    [SerializeField, Tooltip("Количество предметов")] private int _itemsCount = 0;
+    [SerializeField, Tooltip("РџСЂРµРґРјРµС‚")] private ScriptableItem _item = null;
+    [SerializeField, Tooltip("РљРѕР»РёС‡РµСЃС‚РІРѕ РїСЂРµРґРјРµС‚РѕРІ")] private int _itemsCount = 0;
 
     public ScriptableItem Item => _item;
     public int ItemsCount => _itemsCount;
 
     /// <summary>
-    /// Метод заполняющий слот
+    /// РњРµС‚РѕРґ Р·Р°РїРѕР»РЅСЏСЋС‰РёР№ СЃР»РѕС‚
     /// </summary>
-    /// <param name="item">Предмет типа Scriptable Item</param>
-    /// <param name="itemsCount">Количество предметов</param>
+    /// <param name="item">РџСЂРµРґРјРµС‚</param>
+    /// <param name="itemsCount">РљРѕР»РёС‡РµСЃС‚РІРѕ РїСЂРµРґРјРµС‚РѕРІ</param>
     public void SlotSetup(ScriptableItem item, int itemsCount = 1)
     {
         if (item == null || itemsCount <= 0 || item.MaxSlotCapacity < itemsCount) return;
@@ -23,7 +23,7 @@ public class Slot
     }
 
     /// <summary>
-    /// Метод очищающий слот
+    /// РњРµС‚РѕРґ РѕС‡РёС‰Р°СЋС‰РёР№ СЃР»РѕС‚
     /// </summary>
     public void ClearSlot()
     {
@@ -32,10 +32,10 @@ public class Slot
     }
 
     /// <summary>
-    /// Метод добавления предмета в слот
+    /// РњРµС‚РѕРґ РґРѕР±Р°РІР»РµРЅРёСЏ РїСЂРµРґРјРµС‚Р° РІ СЃР»РѕС‚
     /// </summary>
-    /// <param name="count">Количество добавляемых предметов</param>
-    /// <returns>Возвращает значение типа bool указываюшее на успешность выполнения</returns>
+    /// <param name="count">РљРѕР»РёС‡РµСЃС‚РІРѕ РґРѕР±Р°РІР»СЏРµРјС‹С… РїСЂРµРґРјРµС‚РѕРІ</param>
+    /// <returns>Р’РѕР·РІСЂР°С‰Р°РµС‚ Р·РЅР°С‡РµРЅРёРµ С‚РёРїР° bool СѓРєР°Р·С‹РІР°СЋС€РµРµ РЅР° СѓСЃРїРµС€РЅРѕСЃС‚СЊ РІС‹РїРѕР»РЅРµРЅРёСЏ</returns>
     public bool AddItem(int count = 1)
     {
         if (_item == null || count <= 0) return false;
@@ -49,10 +49,10 @@ public class Slot
     }
 
     /// <summary>
-    /// Метод удаления предмета из слота
+    /// РњРµС‚РѕРґ СѓРґР°Р»РµРЅРёСЏ РїСЂРµРґРјРµС‚Р° РёР· СЃР»РѕС‚Р°
     /// </summary>
-    /// <param name="count">Количество удаляемых предметов</param>
-    /// <returns>Возвращает значение типа bool указываюшее на успешность выполнения</returns>
+    /// <param name="count">РљРѕР»РёС‡РµСЃС‚РІРѕ СѓРґР°Р»СЏРµРјС‹С… РїСЂРµРґРјРµС‚РѕРІ</param>
+    /// <returns>Р’РѕР·РІСЂР°С‰Р°РµС‚ Р·РЅР°С‡РµРЅРёРµ С‚РёРїР° bool СѓРєР°Р·С‹РІР°СЋС€РµРµ РЅР° СѓСЃРїРµС€РЅРѕСЃС‚СЊ РІС‹РїРѕР»РЅРµРЅРёСЏ</returns>
     public bool RemoveItem(int count = 1)
     {
         if (count <= 0 || _item == null) return false;
@@ -72,9 +72,9 @@ public class Slot
     }
 
     /// <summary>
-    /// Метод получения доступного количества мест
+    /// РњРµС‚РѕРґ РїРѕР»СѓС‡РµРЅРёСЏ РґРѕСЃС‚СѓРїРЅРѕРіРѕ РєРѕР»РёС‡РµСЃС‚РІР° РјРµСЃС‚
     /// </summary>
-    /// <returns>Возвращает количество доступных мест</returns>
+    /// <returns>Р’РѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»РёС‡РµСЃС‚РІРѕ РґРѕСЃС‚СѓРїРЅС‹С… РјРµСЃС‚</returns>
     public int GetAvailableQuantity()
     {
         return _item != null ? _item.MaxSlotCapacity - _itemsCount : 0;

@@ -1,17 +1,20 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class InventoryUI : MonoBehaviour
 {
     [Header("Inventory")]
-    [SerializeField, Tooltip("���������")] private Inventory _inventory;
+    [SerializeField, Tooltip("Инвентарь")] private Inventory _inventory;
 
     [Header("UI Slots")]
-    [SerializeField, Tooltip("�����")] private List<SlotUI> _slotsUI = new();
+    [SerializeField, Tooltip("Слоты")] private List<SlotUI> _slotsUI = new();
 
     [Header("UI Quick Slots")]
-    [SerializeField, Tooltip("����� �������� ��������")] private List<SlotUI> _quickSlotsUI = new();
+    [SerializeField, Tooltip("Слоты быстрого действия")] private List<SlotUI> _quickSlotsUI = new();
 
+    /// <summary>
+    /// Метод обновления UI всех слотов.
+    /// </summary>
     public void UpdateUISlotsInfo()
     {
         if (!CheckInventorySlotsCount()) {
@@ -27,6 +30,10 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Метод обновления UI слота.
+    /// </summary>
+    /// <param name="index">Индекс</param>
     public void UpdateUISlotInfo(int index)
     {
         if (!CheckInventorySlotsCount())
@@ -40,6 +47,10 @@ public class InventoryUI : MonoBehaviour
             _quickSlotsUI[index].SlotUISetup(_inventory.Slots[index]);
     }
 
+    /// <summary>
+    /// Метод проверяющий равенство количества слотов.
+    /// </summary>
+    /// <returns>Возвращает значение типа bool.</returns>
     private bool CheckInventorySlotsCount()
     {
         return _inventory.Slots.Count == _slotsUI.Count;

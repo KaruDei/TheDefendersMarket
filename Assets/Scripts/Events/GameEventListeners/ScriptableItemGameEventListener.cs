@@ -1,0 +1,1 @@
+public class ScriptableItemGameEventListener : GameEventListener<ScriptableItem> { }

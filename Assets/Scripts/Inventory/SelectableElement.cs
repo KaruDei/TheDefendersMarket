@@ -1,4 +1,4 @@
-using UnityEngine;
+п»їusing UnityEngine;
 using UnityEngine.EventSystems;
 
 public class SelectableElement : MonoBehaviour, IPointerEnterHandler
@@ -6,7 +6,7 @@ public class SelectableElement : MonoBehaviour, IPointerEnterHandler
     private EventSystem _eventSystem;
 
     /// <summary>
-    /// Метод, кэширующий текущую систему событий.
+    /// РњРµС‚РѕРґ, РєСЌС€РёСЂСѓСЋС‰РёР№ С‚РµРєСѓС‰СѓСЋ СЃРёСЃС‚РµРјСѓ СЃРѕР±С‹С‚РёР№.
     /// </summary>
     private void Start()
     {
@@ -14,7 +14,7 @@ public class SelectableElement : MonoBehaviour, IPointerEnterHandler
     }
 
     /// <summary>
-    /// Метод, выделяющий слот
+    /// РњРµС‚РѕРґ, РІС‹РґРµР»СЏСЋС‰РёР№ СЌР»РµРјРµРЅС‚
     /// </summary>
     /// <param name="eventData"></param>
     public void OnPointerEnter(PointerEventData eventData)

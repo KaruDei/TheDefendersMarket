@@ -33,7 +33,7 @@ MonoBehaviour:
   _maxDropCount: 2
   _price: 15
   _sprite: {fileID: 21300000, guid: 81125b8a2191c364a9e7d4f0a662fb60, type: 3}
-  _prefab: {fileID: 2586511762967972061, guid: ac3a2a4635af8874f8b179d90944ca96, type: 3}
+  _prefab: {fileID: 6545945568064303928, guid: 585f3463b6a682f4ba12ac06876e5b41, type: 3}
   _health: 0
   _mana: 25
   _stamina: 0
