@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 259882681366186843}
   - component: {fileID: 7172903072295002984}
   - component: {fileID: 1256796163586267584}
-  - component: {fileID: 2138820160494363896}
   m_Layer: 0
   m_Name: MarketSlot
   m_TagString: Untagged
@@ -68,18 +67,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fabc80b44fd0090479c8b186f15aa157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2138820160494363896
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7930167648300130414}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0965bf034466cd140bbcf6b417ef99bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  _marketPriceTable: {fileID: 4631007670417426046}
+  _onPutItem: {fileID: 11400000, guid: 2977924dacbce064490fb8ac95bde85d, type: 2}
+  _onItemUsed: {fileID: 11400000, guid: 09cfdc737e0656a4980134383a729598, type: 2}
+  _item: {fileID: 0}
+  _currentPrice: 0
 --- !u!1001 &3351283117051419756
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -88,6 +80,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 259882681366186843}
     m_Modifications:
+    - target: {fileID: 5509884117599928618, guid: 38396887ea13ea04abb1f6b15858f64d, type: 3}
+      propertyPath: m_text
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5509884117599928618, guid: 38396887ea13ea04abb1f6b15858f64d, type: 3}
+      propertyPath: m_margin.w
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 5509884117599928618, guid: 38396887ea13ea04abb1f6b15858f64d, type: 3}
+      propertyPath: m_margin.x
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 5509884117599928618, guid: 38396887ea13ea04abb1f6b15858f64d, type: 3}
+      propertyPath: m_margin.y
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 5509884117599928618, guid: 38396887ea13ea04abb1f6b15858f64d, type: 3}
+      propertyPath: m_margin.z
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 5509884117599928618, guid: 38396887ea13ea04abb1f6b15858f64d, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: b19e0f739f6b1cd478320ec6073515d5, type: 2}
+    - target: {fileID: 5509884117599928618, guid: 38396887ea13ea04abb1f6b15858f64d, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 1430786653338746262, guid: b19e0f739f6b1cd478320ec6073515d5, type: 2}
+    - target: {fileID: 5509884117599928618, guid: 38396887ea13ea04abb1f6b15858f64d, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8766715747664673106, guid: 38396887ea13ea04abb1f6b15858f64d, type: 3}
       propertyPath: m_IsTrigger
       value: 1
@@ -139,10 +163,45 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2977243952557475204, guid: 38396887ea13ea04abb1f6b15858f64d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4631007670417426046}
   m_SourcePrefab: {fileID: 100100000, guid: 38396887ea13ea04abb1f6b15858f64d, type: 3}
+--- !u!1 &563914933725780456 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2977243952557475204, guid: 38396887ea13ea04abb1f6b15858f64d, type: 3}
+  m_PrefabInstance: {fileID: 3351283117051419756}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4631007670417426046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 563914933725780456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0965bf034466cd140bbcf6b417ef99bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _slot: {fileID: 1256796163586267584}
+  _text: {fileID: 7130654327428963654}
+  _onPlayerPriceField: {fileID: 11400000, guid: f4d1a11dbee69c54aaa96ba20016a3f9, type: 2}
+  _onSetPriceToField: {fileID: 11400000, guid: d7612a0dc206c80479e77aaa9ec0112b, type: 2}
 --- !u!4 &6296283666859800259 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8782796215740312239, guid: 38396887ea13ea04abb1f6b15858f64d, type: 3}
   m_PrefabInstance: {fileID: 3351283117051419756}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7130654327428963654 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5509884117599928618, guid: 38396887ea13ea04abb1f6b15858f64d, type: 3}
+  m_PrefabInstance: {fileID: 3351283117051419756}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

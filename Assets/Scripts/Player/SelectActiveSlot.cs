@@ -7,6 +7,7 @@ public class SelectActiveSlot : MonoBehaviour
 
     [Header("Events")]
     [SerializeField] private ScriptableItemGameEvent _onEquipActiveSlotItem;
+    [SerializeField] private IntGameEvent _onUpdateSlotInfo;
 
     private SlotUI _activeSlot;
     private int _index;
@@ -88,6 +89,15 @@ public class SelectActiveSlot : MonoBehaviour
         if (_activeSlot != null && _activeSlot.Slot != null && _activeSlot.Slot.Item != null)
             _onEquipActiveSlotItem.Raise(_activeSlot.Slot.Item);
         else
+            _onEquipActiveSlotItem.Raise(null);
+    }
+
+    public void ItemUsed()
+    {
+        _activeSlot.Slot.RemoveItem();
+        _onUpdateSlotInfo.Raise(_index);
+
+        if (_activeSlot.Slot.Item == null)
             _onEquipActiveSlotItem.Raise(null);
     }
 }

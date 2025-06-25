@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3545296454168393108}
   - component: {fileID: 8402078477294482200}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RoofWall22AngleCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62,9 +62,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 198345634044369302}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RoofWall22Angle
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -137,6 +137,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 5874fbf3b3880b64b9f865b3e5caf4b1, type: 3}
       propertyPath: m_Name
       value: RoofWall22AngleModel
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5874fbf3b3880b64b9f865b3e5caf4b1, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

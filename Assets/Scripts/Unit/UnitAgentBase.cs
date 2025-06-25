@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -10,6 +9,7 @@ public abstract class UnitAgentBase : Unit, IAttack, IAgent
     [SerializeField] protected LayerMask _attackLayerMask;
 
     [Header("Agent")]
+    [SerializeField] protected Animator _animator;
     [SerializeField] protected NavMeshAgent _agent;
     [SerializeField] protected float _stopDistance = 2.0f;
     [SerializeField] protected float _playerFollowDistance = 10.0f;
@@ -27,8 +27,12 @@ public abstract class UnitAgentBase : Unit, IAttack, IAgent
 
     public float Damage => _damage;
 
+    private Coroutine _coroutine;
+
     public virtual void Attack()
     {
+        if (!_isAlive) return;
+
         if (!_isCanAttack && !_isAttack)
         {
             _attackTime += Time.fixedDeltaTime;
@@ -75,6 +79,7 @@ public abstract class UnitAgentBase : Unit, IAttack, IAgent
 
     public virtual void StartAttack()
     {
+        _animator.SetTrigger("Attack");
         _isAttack = true;
         _isCanAttack = false;
     }
@@ -96,6 +101,12 @@ public abstract class UnitAgentBase : Unit, IAttack, IAgent
 
     public virtual void Move()
     {
+        if (!_isAlive)
+        {
+            _agent.isStopped = true;
+            return;
+        }
+
         GetTarget();
         AgentStopAndTrackingTarget();
         PushingAwayFromPlayer();

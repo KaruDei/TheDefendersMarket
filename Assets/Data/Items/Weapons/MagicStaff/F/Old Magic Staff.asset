@@ -45,10 +45,10 @@ MonoBehaviour:
   _maxStackCapacity: 1
   _maxDropCount: 1
   _price: 25
-  _sprite: {fileID: 21300000, guid: 7ce19325094c8c149babd85f137156b9, type: 3}
-  _prefab: {fileID: 8144495526571794680, guid: 3a79771cafff9bb4daf49203c3801bd1, type: 3}
+  _sprite: {fileID: 21300000, guid: 1a5d7af847f209e4d9a1b1c2ccd9b1f5, type: 3}
+  _prefab: {fileID: 3964651461191289238, guid: 107bfcac36ae60341b93cc3f20ab1c2e, type: 3}
   _damage: 10
   _attackDistance: 10
   _attackRecoveryTime: 2.5
-  _magicPrefab: {fileID: 6560360009921319146, guid: c6ae7e0bdab010549afb6da65e3344bd, type: 3}
+  _magicPrefab: {fileID: 8953189815678055382, guid: 891d0f6d2cb98ef49afa93bd2a7cb3df, type: 3}
   _attackManaCost: 15

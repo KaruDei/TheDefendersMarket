@@ -7,7 +7,14 @@ public class UIManager : MonoBehaviour
     [SerializeField, Tooltip("Окно игровых индикаторво")] private GameObject _gameIndicators;
     [SerializeField, Tooltip("Окно инвентаря")] private GameObject _inventory;
     [SerializeField, Tooltip("Окно меню")] private GameObject _pauseMenu;
-    [SerializeField, Tooltip("Окно настроек")] private GameObject _options;
+    [SerializeField, Tooltip("Окно умений")] private GameObject _skills;
+    [SerializeField, Tooltip("Окно умений")] private GameObject _quests;
+    [SerializeField, Tooltip("Окно умений")] private GameObject _priceInput;
+    [SerializeField, Tooltip("Окно умений")] private GameObject _orders;
+    [SerializeField, Tooltip("Окно умений")] private GameObject _loadScreen;
+
+    [Header("State")]
+    [SerializeField] private UIStates _startState;
 
     [Header("Events")]
     [SerializeField, Tooltip("Событие смены карты")] private StringGameEvent _onSwitchMap;
@@ -18,7 +25,7 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        Game();
+        SetState(_startState);
     }
 
     public void UpdateUIWindow()
@@ -29,17 +36,25 @@ public class UIManager : MonoBehaviour
                 _gameIndicators.SetActive(true);
                 _inventory.SetActive(false);
                 _pauseMenu.SetActive(false);
-                _options.SetActive(false);
+                _skills.SetActive(false);
+                _quests.SetActive(false);
+                _priceInput.SetActive(false);
+                _orders.SetActive(false);
+                _loadScreen.SetActive(false);
                 EventSystem.current.SetSelectedGameObject(null);
                 HideCursor();
                 _onSwitchMap.Raise("Player");
                 break;
 
-            case UIStates.OPTIONS:
+            case UIStates.SKILLS:
                 _gameIndicators.SetActive(false);
                 _inventory.SetActive(false);
                 _pauseMenu.SetActive(false);
-                _options.SetActive(true);
+                _skills.SetActive(true);
+                _quests.SetActive(false);
+                _priceInput.SetActive(false);
+                _orders.SetActive(false);
+                _loadScreen.SetActive(false);
                 _onSwitchMap.Raise("UI");
                 VisableCursor();
                 break;
@@ -48,7 +63,11 @@ public class UIManager : MonoBehaviour
                 _gameIndicators.SetActive(false);
                 _inventory.SetActive(true);
                 _pauseMenu.SetActive(false);
-                _options.SetActive(false);
+                _skills.SetActive(false);
+                _quests.SetActive(false);
+                _priceInput.SetActive(false);
+                _orders.SetActive(false);
+                _loadScreen.SetActive(false);
                 _onSwitchMap.Raise("UI");
                 VisableCursor();
                 break;
@@ -57,9 +76,65 @@ public class UIManager : MonoBehaviour
                 _gameIndicators.SetActive(false);
                 _inventory.SetActive(false);
                 _pauseMenu.SetActive(true);
-                _options.SetActive(false);
+                _skills.SetActive(false);
+                _quests.SetActive(false);
+                _priceInput.SetActive(false);
+                _orders.SetActive(false);
+                _loadScreen.SetActive(false);
                 _onSwitchMap.Raise("UI");
                 VisableCursor();
+                break;
+
+            case UIStates.QUESTS:
+                _gameIndicators.SetActive(false);
+                _inventory.SetActive(false);
+                _pauseMenu.SetActive(false);
+                _skills.SetActive(false);
+                _quests.SetActive(true);
+                _priceInput.SetActive(false);
+                _orders.SetActive(false);
+                _loadScreen.SetActive(false);
+                _onSwitchMap.Raise("UI");
+                VisableCursor();
+                break;
+
+            case UIStates.PRICE_INPUT:
+                _gameIndicators.SetActive(false);
+                _inventory.SetActive(false);
+                _pauseMenu.SetActive(false);
+                _skills.SetActive(false);
+                _quests.SetActive(false);
+                _priceInput.SetActive(true);
+                _orders.SetActive(false);
+                _loadScreen.SetActive(false);
+                _onSwitchMap.Raise("UI");
+                VisableCursor();
+                break;
+            
+            case UIStates.ORDERS:
+                _gameIndicators.SetActive(false);
+                _inventory.SetActive(false);
+                _pauseMenu.SetActive(false);
+                _skills.SetActive(false);
+                _quests.SetActive(false);
+                _priceInput.SetActive(false);
+                _orders.SetActive(true);
+                _loadScreen.SetActive(false);
+                _onSwitchMap.Raise("UI");
+                VisableCursor();
+                break;
+
+            case UIStates.LOAD_SCREEN:
+                _gameIndicators.SetActive(false);
+                _inventory.SetActive(false);
+                _pauseMenu.SetActive(false);
+                _skills.SetActive(false);
+                _quests.SetActive(false);
+                _priceInput.SetActive(false);
+                _orders.SetActive(false);
+                _loadScreen.SetActive(true);
+                _onSwitchMap.Raise("UI");
+                HideCursor();
                 break;
         }
     }
@@ -101,34 +176,58 @@ public class UIManager : MonoBehaviour
 
     public void Game()
     {
-        Debug.Log("Game");
+        //Debug.Log("Game");
         SetState(UIStates.GAME);
+    }
+
+    public void Quests()
+    {
+        //Debug.Log("Quests");
+        SetState(UIStates.QUESTS);
+    }
+    
+    public void LoadScreen()
+    {
+        //Debug.Log("LoadScreen");
+        SetState(UIStates.LOAD_SCREEN);
+    }
+
+    public void Orders()
+    {
+        //Debug.Log("Orders");
+        SetState(UIStates.ORDERS);
+    }
+
+    public void PriceInput()
+    {
+        //Debug.Log("PriceInput");
+        SetState(UIStates.PRICE_INPUT);
     }
 
     public void Inventory()
     {
-        Debug.Log("Inventory");
-        if (State == UIStates.INVENTORY)
-            SetState(UIStates.GAME);
-        else
+        //Debug.Log("Inventory");
+        //if (State == UIStates.INVENTORY)
+        //    SetState(UIStates.GAME);
+        //else
             SetState(UIStates.INVENTORY);
     }
     
     public void PauseMenu()
     {
-        Debug.Log("Pause");
-        if (State == UIStates.PAUSE_MENU)
-            SetState(UIStates.GAME);
-        else
+        //Debug.Log("Pause");
+        //if (State == UIStates.PAUSE_MENU)
+        //    SetState(UIStates.GAME);
+        //else
             SetState(UIStates.PAUSE_MENU);
     }
 
-    public void Options()
+    public void Skills()
     {
-        Debug.Log("Options");
-        if (State == UIStates.OPTIONS)
-            SetState(UIStates.PAUSE_MENU);
-        else
-            SetState(UIStates.OPTIONS);
+        //Debug.Log("Skills");
+        //if (State == UIStates.SKILLS)
+        //    SetState(UIStates.PAUSE_MENU);
+        //else
+            SetState(UIStates.SKILLS);
     }
 }

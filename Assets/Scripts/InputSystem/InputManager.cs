@@ -84,7 +84,7 @@ public class InputManager : MonoBehaviour
     {
         _playerInput.onControlsChanged -= ControlChange;
 
-        _currentMapName = _playerInput.currentActionMap.name;
+        //_currentMapName = _playerInput.currentActionMap.name;
         UnbindActions();
     }
 

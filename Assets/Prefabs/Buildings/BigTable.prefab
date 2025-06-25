@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7240755216021677184}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: MarketSlots
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,9 +48,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2625596685401394807}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BigTable
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -83,7 +83,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1750926352717376987}
   - component: {fileID: 945751064762621275}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BigTableCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -134,6 +134,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7240755216021677184}
     m_Modifications:
+    - target: {fileID: 205308249583807125, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 259882681366186843, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.45
@@ -174,9 +178,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 563914933725780456, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1256796163586267584, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: _onPutItem
+      value: 
+      objectReference: {fileID: 11400000, guid: 2977924dacbce064490fb8ac95bde85d, type: 2}
+    - target: {fileID: 1256796163586267584, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: _onItemUsed
+      value: 
+      objectReference: {fileID: 11400000, guid: 09cfdc737e0656a4980134383a729598, type: 2}
+    - target: {fileID: 2138820160494363896, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: _text
+      value: 
+      objectReference: {fileID: 7154546304440284868}
+    - target: {fileID: 5264915056579871386, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6111139098433218084, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 7930167648300130414, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
       propertyPath: m_Name
       value: MarketSlot (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7930167648300130414, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8179356155585493175, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -188,6 +224,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 259882681366186843, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
   m_PrefabInstance: {fileID: 125856292777388930}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7154546304440284868 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7130654327428963654, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+  m_PrefabInstance: {fileID: 125856292777388930}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1559961417468618233
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -196,6 +243,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7240755216021677184}
     m_Modifications:
+    - target: {fileID: 205308249583807125, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 259882681366186843, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.5
@@ -236,9 +287,45 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 563914933725780456, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1256796163586267584, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: _onPutItem
+      value: 
+      objectReference: {fileID: 11400000, guid: 2977924dacbce064490fb8ac95bde85d, type: 2}
+    - target: {fileID: 1256796163586267584, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: _onItemUsed
+      value: 
+      objectReference: {fileID: 11400000, guid: 09cfdc737e0656a4980134383a729598, type: 2}
+    - target: {fileID: 1256796163586267584, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: _marketPriceTable
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2138820160494363896, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: _text
+      value: 
+      objectReference: {fileID: 8598274320538106047}
+    - target: {fileID: 5264915056579871386, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6111139098433218084, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 7930167648300130414, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
       propertyPath: m_Name
       value: MarketSlot (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7930167648300130414, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8179356155585493175, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -250,6 +337,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 259882681366186843, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
   m_PrefabInstance: {fileID: 1559961417468618233}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8598274320538106047 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7130654327428963654, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+  m_PrefabInstance: {fileID: 1559961417468618233}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1754085064415573609
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -258,6 +356,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7240755216021677184}
     m_Modifications:
+    - target: {fileID: 205308249583807125, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 259882681366186843, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.5
@@ -298,9 +400,45 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 563914933725780456, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1256796163586267584, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: _onPutItem
+      value: 
+      objectReference: {fileID: 11400000, guid: 2977924dacbce064490fb8ac95bde85d, type: 2}
+    - target: {fileID: 1256796163586267584, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: _onItemUsed
+      value: 
+      objectReference: {fileID: 11400000, guid: 09cfdc737e0656a4980134383a729598, type: 2}
+    - target: {fileID: 1256796163586267584, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: _marketPriceTable
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2138820160494363896, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: _text
+      value: 
+      objectReference: {fileID: 8836888503465782063}
+    - target: {fileID: 5264915056579871386, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6111139098433218084, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 7930167648300130414, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
       propertyPath: m_Name
       value: MarketSlot (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7930167648300130414, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8179356155585493175, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -312,6 +450,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 259882681366186843, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
   m_PrefabInstance: {fileID: 1754085064415573609}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8836888503465782063 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7130654327428963654, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+  m_PrefabInstance: {fileID: 1754085064415573609}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1924070132846470042
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -320,6 +469,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7240755216021677184}
     m_Modifications:
+    - target: {fileID: 205308249583807125, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 259882681366186843, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.5
@@ -360,9 +513,45 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 563914933725780456, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1256796163586267584, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: _onPutItem
+      value: 
+      objectReference: {fileID: 11400000, guid: 2977924dacbce064490fb8ac95bde85d, type: 2}
+    - target: {fileID: 1256796163586267584, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: _onItemUsed
+      value: 
+      objectReference: {fileID: 11400000, guid: 09cfdc737e0656a4980134383a729598, type: 2}
+    - target: {fileID: 1256796163586267584, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: _marketPriceTable
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2138820160494363896, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: _text
+      value: 
+      objectReference: {fileID: 8666763807961513692}
+    - target: {fileID: 5264915056579871386, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6111139098433218084, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 7930167648300130414, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
       propertyPath: m_Name
       value: MarketSlot (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7930167648300130414, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8179356155585493175, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -374,6 +563,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 259882681366186843, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
   m_PrefabInstance: {fileID: 1924070132846470042}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8666763807961513692 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7130654327428963654, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+  m_PrefabInstance: {fileID: 1924070132846470042}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3624173352542602708
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -382,6 +582,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7240755216021677184}
     m_Modifications:
+    - target: {fileID: 205308249583807125, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 259882681366186843, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.45
@@ -422,9 +626,45 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 563914933725780456, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1256796163586267584, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: _onPutItem
+      value: 
+      objectReference: {fileID: 11400000, guid: 2977924dacbce064490fb8ac95bde85d, type: 2}
+    - target: {fileID: 1256796163586267584, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: _onItemUsed
+      value: 
+      objectReference: {fileID: 11400000, guid: 09cfdc737e0656a4980134383a729598, type: 2}
+    - target: {fileID: 1256796163586267584, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: _marketPriceTable
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2138820160494363896, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: _text
+      value: 
+      objectReference: {fileID: 5818239650870614162}
+    - target: {fileID: 5264915056579871386, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6111139098433218084, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 7930167648300130414, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
       propertyPath: m_Name
       value: MarketSlot (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7930167648300130414, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8179356155585493175, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -436,6 +676,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 259882681366186843, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
   m_PrefabInstance: {fileID: 3624173352542602708}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5818239650870614162 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7130654327428963654, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+  m_PrefabInstance: {fileID: 3624173352542602708}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4711087683428511410
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -444,6 +695,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7240755216021677184}
     m_Modifications:
+    - target: {fileID: 205308249583807125, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 259882681366186843, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.45
@@ -484,15 +739,58 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 563914933725780456, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1256796163586267584, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: _onPutItem
+      value: 
+      objectReference: {fileID: 11400000, guid: 2977924dacbce064490fb8ac95bde85d, type: 2}
+    - target: {fileID: 1256796163586267584, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: _onItemUsed
+      value: 
+      objectReference: {fileID: 11400000, guid: 09cfdc737e0656a4980134383a729598, type: 2}
+    - target: {fileID: 2138820160494363896, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: _text
+      value: 
+      objectReference: {fileID: 2563684108558939124}
+    - target: {fileID: 5264915056579871386, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6111139098433218084, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 7930167648300130414, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
       propertyPath: m_Name
       value: MarketSlot (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7930167648300130414, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8179356155585493175, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+--- !u!114 &2563684108558939124 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7130654327428963654, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+  m_PrefabInstance: {fileID: 4711087683428511410}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4826289395304949225 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 259882681366186843, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
@@ -550,6 +848,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTableModel
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7c72ef48d6888ba4583428a681b055b4, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -568,6 +870,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7240755216021677184}
     m_Modifications:
+    - target: {fileID: 205308249583807125, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 259882681366186843, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.45
@@ -608,15 +914,62 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 563914933725780456, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1256796163586267584, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: _onPutItem
+      value: 
+      objectReference: {fileID: 11400000, guid: 2977924dacbce064490fb8ac95bde85d, type: 2}
+    - target: {fileID: 1256796163586267584, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: _onItemUsed
+      value: 
+      objectReference: {fileID: 11400000, guid: 09cfdc737e0656a4980134383a729598, type: 2}
+    - target: {fileID: 1256796163586267584, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: _marketPriceTable
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2138820160494363896, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: _text
+      value: 
+      objectReference: {fileID: 4473962852660639560}
+    - target: {fileID: 5264915056579871386, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6111139098433218084, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 7930167648300130414, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
       propertyPath: m_Name
       value: MarketSlot
+      objectReference: {fileID: 0}
+    - target: {fileID: 7930167648300130414, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8179356155585493175, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+--- !u!114 &4473962852660639560 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7130654327428963654, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+  m_PrefabInstance: {fileID: 6693362615900449294}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &6879477395174957397 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 259882681366186843, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
@@ -630,6 +983,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7240755216021677184}
     m_Modifications:
+    - target: {fileID: 205308249583807125, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 259882681366186843, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.5
@@ -670,15 +1027,58 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 563914933725780456, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1256796163586267584, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: _onPutItem
+      value: 
+      objectReference: {fileID: 11400000, guid: 2977924dacbce064490fb8ac95bde85d, type: 2}
+    - target: {fileID: 1256796163586267584, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: _onItemUsed
+      value: 
+      objectReference: {fileID: 11400000, guid: 09cfdc737e0656a4980134383a729598, type: 2}
+    - target: {fileID: 2138820160494363896, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: _text
+      value: 
+      objectReference: {fileID: 957143586130881452}
+    - target: {fileID: 5264915056579871386, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6111139098433218084, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 7930167648300130414, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
       propertyPath: m_Name
       value: MarketSlot (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7930167648300130414, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8179356155585493175, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+--- !u!114 &957143586130881452 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7130654327428963654, guid: c744910f0fa794e40aa382949a4f8167, type: 3}
+  m_PrefabInstance: {fileID: 8051689915397617386}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7792934598320930225 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 259882681366186843, guid: c744910f0fa794e40aa382949a4f8167, type: 3}

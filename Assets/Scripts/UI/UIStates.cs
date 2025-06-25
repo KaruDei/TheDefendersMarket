@@ -1,8 +1,12 @@
 public enum UIStates
 {
     MENU,
-    OPTIONS,
+    SKILLS,
     GAME,
     PAUSE_MENU,
     INVENTORY,
+    QUESTS,
+    PRICE_INPUT,
+    ORDERS,
+    LOAD_SCREEN,
 }

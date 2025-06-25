@@ -17,7 +17,7 @@ public class ScriptableItem : ScriptableObject
     [SerializeField, Range(1, 10), Tooltip("Максимальное количество выпадаемых предметов")] private int _maxDropCount;
 
     [Header("Item Price")]
-    [SerializeField, Tooltip("Цена")] private float _price;
+    [SerializeField, Tooltip("Цена")] private int _price;
 
     [Header("Item Sprite")]
     [SerializeField, Tooltip("Изображение")] private Sprite _sprite;
@@ -29,7 +29,7 @@ public class ScriptableItem : ScriptableObject
     public string Description => _description;
     public int MaxSlotCapacity => _maxStackCapacity;
     public int MaxDropCount => _maxDropCount;
-    public float Price => _price;
+    public int Price => _price;
     public Sprite Sprite => _sprite;
     public GameObject Prefab => _prefab;
 }

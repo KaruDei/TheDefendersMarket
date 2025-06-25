@@ -32,8 +32,8 @@ MonoBehaviour:
   _maxStackCapacity: 5
   _maxDropCount: 2
   _price: 15
-  _sprite: {fileID: 21300000, guid: 20e0bea4cef3987418c9e86101ba7a36, type: 3}
-  _prefab: {fileID: 3221322799924106053, guid: e3f5068a08071854f89a043675fabb0a, type: 3}
+  _sprite: {fileID: 21300000, guid: b7134ad464d05ba4a83078b48092cba3, type: 3}
+  _prefab: {fileID: 1470376224818373071, guid: e3f5068a08071854f89a043675fabb0a, type: 3}
   _health: 0
   _mana: 0
   _stamina: 25

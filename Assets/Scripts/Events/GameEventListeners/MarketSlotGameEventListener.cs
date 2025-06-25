@@ -1,0 +1,1 @@
+public class MarketSlotGameEventListener : GameEventListener<MarketSlot> { }

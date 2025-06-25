@@ -142,8 +142,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 0
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b19e0f739f6b1cd478320ec6073515d5, type: 2}
+  m_sharedMaterial: {fileID: 1430786653338746262, guid: b19e0f739f6b1cd478320ec6073515d5, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -281,8 +281,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d45acca857bb70e4d9bb7e4e1078d9a7, type: 3}
-  m_Type: 1
+  m_Sprite: {fileID: -1190135215, guid: 9bddc51bf7bc801498f7e11dd62c4acc, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -306,8 +306,8 @@ MonoBehaviour:
   _imageSlot: {fileID: 8209599311695042426}
   _imageItem: {fileID: 91931431351137609}
   _textItemCount: {fileID: 3560037594922443176}
-  _slotBaseSprite: {fileID: 21300000, guid: d45acca857bb70e4d9bb7e4e1078d9a7, type: 3}
-  _slotSelectedSprite: {fileID: 21300000, guid: 7f576ffbbfa167e4fb64d2fce9349450, type: 3}
+  _slotBaseSprite: {fileID: -1190135215, guid: 9bddc51bf7bc801498f7e11dd62c4acc, type: 3}
+  _slotSelectedSprite: {fileID: 635308352, guid: 9bddc51bf7bc801498f7e11dd62c4acc, type: 3}
   _onSlotInfo: {fileID: 11400000, guid: ec1df136c89422340ad9e5666f423701, type: 2}
   Slot:
     _item: {fileID: 0}
@@ -343,7 +343,7 @@ MonoBehaviour:
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 21300000, guid: 68a88895546ad9d43ad16e3cff85543a, type: 3}
+    m_SelectedSprite: {fileID: 635308352, guid: 9bddc51bf7bc801498f7e11dd62c4acc, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal

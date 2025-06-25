@@ -30,6 +30,7 @@ public class Item : MonoBehaviour, IInteractable, IUseable
 
     public void Use()
     {
-        _onItemUsed.Raise(this);
+        if (_onItemUsed == null) return;
+            _onItemUsed.Raise(this);
     }
 }

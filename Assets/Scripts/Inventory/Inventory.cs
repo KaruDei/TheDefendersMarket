@@ -250,4 +250,22 @@ public class Inventory : MonoBehaviour
             _selectedSlot = null;
         }
     }
+
+
+    public void Save()
+    {
+        PlayerPrefs.SetString("Inventory", JsonUtility.ToJson(_slots));
+        Debug.Log(PlayerPrefs.GetString("Inventory"));
+    }
+
+    public bool Load()
+    {
+        if (PlayerPrefs.HasKey("Inventory"))
+        {
+            JsonUtility.FromJsonOverwrite(PlayerPrefs.GetString("Inventory"), _slots);
+            return true;
+        }
+        else
+            return false;
+    }
 }

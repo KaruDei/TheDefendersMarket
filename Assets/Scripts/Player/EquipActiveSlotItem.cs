@@ -43,4 +43,20 @@ public class EquipActiveSlotItem : MonoBehaviour
             _currentActive = obj;
         }
     }
+
+    public void UseSelectItem()
+    {
+        if (_currentActive != null && _currentActive.TryGetComponent(out Item item))
+        {
+            item.Use();
+        }
+    }
+
+    public void PutSelectItem(MarketSlot slot)
+    {
+        if (_currentActive != null && _currentActive.TryGetComponent(out Item item))
+        {
+            slot.Setup(item);
+        }
+    }
 }

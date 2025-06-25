@@ -4,7 +4,7 @@ using UnityEngine;
 public class MovementController : MonoBehaviour
 {
     [Header("Player")]
-    [SerializeField] private PlayerComponent _player;
+    [SerializeField] private InputManager _inputManager;
 
     [Header("Movement")]
     [SerializeField] private CharacterController _characterController;
@@ -24,8 +24,8 @@ public class MovementController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //if (!_player.IsAlive) return;
-        if (!_player.IsCanMove) return;
+        //if (!_inputManager.IsAlive) return;
+        //if (!_inputManager.IsCanMove) return;
         Move();
         //Jump();
         Look();
@@ -33,10 +33,10 @@ public class MovementController : MonoBehaviour
 
     private void Move()
     {
-        float targetSpeed = _player.InputManager.Sprint ? _runSpeed : _walkSpeed;
-        if (_player.InputManager.Move == Vector2.zero) targetSpeed = 0;
+        float targetSpeed = _inputManager.Sprint ? _runSpeed : _walkSpeed;
+        if (_inputManager.Move == Vector2.zero) targetSpeed = 0;
 
-        _characterController.Move(transform.TransformDirection(new Vector3(_player.InputManager.Move.normalized.x * targetSpeed, 0, _player.InputManager.Move.normalized.y * targetSpeed) * Time.fixedDeltaTime));
+        _characterController.Move(transform.TransformDirection(new Vector3(_inputManager.Move.normalized.x * targetSpeed, 0, _inputManager.Move.normalized.y * targetSpeed) * Time.fixedDeltaTime));
 
         if (_characterController.isGrounded && _velocity.y < 0) _velocity.y = -1f;
         _velocity.y += _gravity * Time.fixedDeltaTime;
@@ -53,8 +53,8 @@ public class MovementController : MonoBehaviour
 
     private void Look()
     {
-        float mouseX = _player.InputManager.Look.x * _sensitivity * Time.fixedDeltaTime;
-        float mouseY = _player.InputManager.Look.y * _sensitivity * Time.fixedDeltaTime;
+        float mouseX = _inputManager.Look.x * _sensitivity * Time.fixedDeltaTime;
+        float mouseY = _inputManager.Look.y * _sensitivity * Time.fixedDeltaTime;
 
         _xRotation -= mouseY;
         _xRotation = Mathf.Clamp(_xRotation, _bottomLimit, _upperLimit);

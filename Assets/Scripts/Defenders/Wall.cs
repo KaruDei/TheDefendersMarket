@@ -9,8 +9,7 @@ public class Wall : DefenderStructureBase
 
     public override void Die()
     {
-        if (!_isAlive) return;
+        base.Die();
         EventBus.PublishBuildingDestroyed(this);
-        Destroy(gameObject);
     }
 }

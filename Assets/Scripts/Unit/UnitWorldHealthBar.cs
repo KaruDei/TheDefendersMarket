@@ -23,7 +23,7 @@ public class UnitWorldHealthBar : MonoBehaviour
 
     private void UpdateHealthBar()
     {
-        _healthBar.fillAmount = _character.Health / _character.MaxHealth;
+        _healthBar.fillAmount = _character.CurrentHealth / _character.MaxHealth;
     }
 
     private void RotateToCamera()

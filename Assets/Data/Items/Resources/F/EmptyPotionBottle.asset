@@ -19,5 +19,5 @@ MonoBehaviour:
   _maxStackCapacity: 5
   _maxDropCount: 5
   _price: 5
-  _sprite: {fileID: 21300000, guid: 70a93c6ce819ab342b5cf2f3fb0df439, type: 3}
-  _prefab: {fileID: 5785088727460448859, guid: 6c61de24569b5a948b49c081faea5298, type: 3}
+  _sprite: {fileID: 21300000, guid: 17e60d065f29da34895aa8b83fb60154, type: 3}
+  _prefab: {fileID: 4044010942171602635, guid: f361fdf8ddf9ea94ea1fa11a84f93b48, type: 3}

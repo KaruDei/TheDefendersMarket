@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6108039661999633419}
   - component: {fileID: 2480354021617763461}
   - component: {fileID: 2585227205326546537}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: WallWithDoorwayCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,9 +106,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5068083265528621881}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: WallWithDoorway
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -181,6 +181,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: bb7d48b1b4cc83f4abbd371f23018ca6, type: 3}
       propertyPath: m_Name
       value: WallWithDoorwayModel
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bb7d48b1b4cc83f4abbd371f23018ca6, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
